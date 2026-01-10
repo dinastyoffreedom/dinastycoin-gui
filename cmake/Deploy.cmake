@@ -7,7 +7,7 @@ if(APPLE OR (WIN32 AND NOT STATIC))
         find_program(MACDEPLOYQT_EXECUTABLE macdeployqt HINTS "${_qt_bin_dir}")
         add_custom_command(TARGET deploy
                            POST_BUILD
-                           COMMAND "${MACDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE_DIR:monero-wallet-gui>/../.." -always-overwrite -qmldir="${CMAKE_SOURCE_DIR}"
+                           COMMAND "${MACDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../.." -always-overwrite -qmldir="${CMAKE_SOURCE_DIR}"
                            COMMENT "Running macdeployqt..."
         )
 
@@ -16,11 +16,11 @@ if(APPLE OR (WIN32 AND NOT STATIC))
         if(_qt_svg_dylib)
             add_custom_command(TARGET deploy
                                POST_BUILD
-                               COMMAND ${CMAKE_COMMAND} -E copy ${_qt_svg_dylib} $<TARGET_FILE_DIR:monero-wallet-gui>/../PlugIns/imageformats/
-                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtGui.framework/Versions/5/QtGui" "@executable_path/../Frameworks/QtGui.framework/Versions/5/QtGui" $<TARGET_FILE_DIR:monero-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
-                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtWidgets.framework/Versions/5/QtWidgets" "@executable_path/../Frameworks/QtWidgets.framework/Versions/5/QtWidgets" $<TARGET_FILE_DIR:monero-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
-                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtSvg.framework/Versions/5/QtSvg" "@executable_path/../Frameworks/QtSvg.framework/Versions/5/QtSvg" $<TARGET_FILE_DIR:monero-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
-                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtCore.framework/Versions/5/QtCore" "@executable_path/../Frameworks/QtCore.framework/Versions/5/QtCore" $<TARGET_FILE_DIR:monero-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
+                               COMMAND ${CMAKE_COMMAND} -E copy ${_qt_svg_dylib} $<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../PlugIns/imageformats/
+                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtGui.framework/Versions/5/QtGui" "@executable_path/../Frameworks/QtGui.framework/Versions/5/QtGui" $<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
+                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtWidgets.framework/Versions/5/QtWidgets" "@executable_path/../Frameworks/QtWidgets.framework/Versions/5/QtWidgets" $<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
+                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtSvg.framework/Versions/5/QtSvg" "@executable_path/../Frameworks/QtSvg.framework/Versions/5/QtSvg" $<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
+                               COMMAND ${CMAKE_INSTALL_NAME_TOOL} -change "${CMAKE_PREFIX_PATH}/lib/QtCore.framework/Versions/5/QtCore" "@executable_path/../Frameworks/QtCore.framework/Versions/5/QtCore" $<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../PlugIns/imageformats/libqsvg.dylib
                                COMMENT "Copying libqsvg.dylib, running install_name_tool"
 
             )
@@ -34,7 +34,7 @@ if(APPLE OR (WIN32 AND NOT STATIC))
                 add_custom_command(TARGET deploy POST_BUILD
                                    COMMAND ${CMAKE_COMMAND} -E copy
                                    "$<TARGET_FILE:${_tgt}>"
-                                   "$<TARGET_FILE_DIR:monero-wallet-gui>/../Frameworks/"
+                                   "$<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../Frameworks/"
                                    COMMENT "Copying $<TARGET_FILE_NAME:${_tgt}>"
                 )
             endif()
@@ -45,15 +45,15 @@ if(APPLE OR (WIN32 AND NOT STATIC))
         if(CODESIGN_EXECUTABLE)
             add_custom_command(TARGET deploy
                             POST_BUILD
-                            COMMAND "${CODESIGN_EXECUTABLE}" --force --deep --sign - "$<TARGET_FILE_DIR:monero-wallet-gui>/../.."
+                            COMMAND "${CODESIGN_EXECUTABLE}" --force --deep --sign - "$<TARGET_FILE_DIR:dinastycoin-wallet-gui>/../.."
                             COMMENT "Running codesign..."
             )
         endif()
 
     elseif(WIN32)
         find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
-        add_custom_command(TARGET monero-wallet-gui POST_BUILD
-                           COMMAND "${CMAKE_COMMAND}" -E env PATH="${_qt_bin_dir}" "${WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:monero-wallet-gui>" -no-translations -qmldir="${CMAKE_SOURCE_DIR}"
+        add_custom_command(TARGET dinastycoin-wallet-gui POST_BUILD
+                           COMMAND "${CMAKE_COMMAND}" -E env PATH="${_qt_bin_dir}" "${WINDEPLOYQT_EXECUTABLE}" "$<TARGET_FILE:dinastycoin-wallet-gui>" -no-translations -qmldir="${CMAKE_SOURCE_DIR}"
                            COMMENT "Running windeployqt..."
         )
         set(WIN_DEPLOY_DLLS
@@ -104,6 +104,58 @@ if(APPLE OR (WIN32 AND NOT STATIC))
             libicuio78.dll
             libicutu78.dll
             libicuuc78.dll
+            #missing
+            libabsl_cord-2508.0.0.dll
+            libabsl_cord_internal-2508.0.0.dll
+            libabsl_cordz_info-2508.0.0.dll
+            libabsl_die_if_null-2508.0.0.dll
+            libabsl_hash-2508.0.0.dll
+            libabsl_log_internal_check_op-2508.0.0.dll
+            libabsl_log_internal_conditions-2508.0.0.dll
+            libabsl_log_internal_message-2508.0.0.dll
+            libabsl_log_internal_nullguard-2508.0.0.dll
+            libabsl_raw_hash_set-2508.0.0.dll
+            libabsl_raw_logging_internal-2508.0.0.dll
+            libabsl_raw_hash_set-2508.0.0.dll
+            libabsl_spinlock_wait-2508.0.0.dll
+            libabsl_status-2508.0.0.dll
+            libabsl_statusor-2508.0.0.dll
+            libabsl_str_format_internal-2508.0.0.dll
+            libabsl_strings-2508.0.0.dll
+            libabsl_strings_internal-2508.0.0.dll          
+            libabsl_synchronization-2508.0.0.dll
+            # libabsl_thread-2508.0.0.dll
+            libabsl_throw_delegate-2508.0.0.dll
+            libabsl_time-2508.0.0.dll
+            libabsl_time_zone-2508.0.0.dll
+            libabsl_crc_cord_state-2508.0.0.dll
+            libabsl_stacktrace-2508.0.0.dll
+            libabsl_base-2508.0.0.dll
+            libabsl_city-2508.0.0.dll
+            libabsl_cordz_handle-2508.0.0.dll
+            libabsl_strerror-2508.0.0.dll
+            libabsl_leak_check-2508.0.0.dll
+            libabsl_hashtablez_sampler-2508.0.0.dll
+            libabsl_examine_stack-2508.0.0.dll
+            libabsl_log_globals-2508.0.0.dll
+            libabsl_log_internal_format-2508.0.0.dll
+            libabsl_log_internal_globals-2508.0.0.dll
+            libabsl_log_internal_proto-2508.0.0.dll
+            libabsl_log_internal_log_sink_set-2508.0.0.dll
+            libabsl_log_internal_structured_proto-2508.0.0.dll
+            libabsl_tracing_internal-2508.0.0.dll
+            libabsl_strings-2508.0.0.dll
+            libabsl_kernel_timeout_internal-2508.0.0.dll
+            libabsl_malloc_internal-2508.0.0.dll
+            libabsl_crc32c-2508.0.0.dll
+            libabsl_crc_internal-2508.0.0.dll
+            libabsl_symbolize-2508.0.0.dll
+            libabsl_log_sink-2508.0.0.dll
+            libpcre2-8-0.dll    
+            libabsl_int128-2508.0.0.dll         
+            libutf8_validity.dll
+            libunbound-8.dll
+            libmd4c.dll
         )
 
         # Boost Regex is header-only since 1.77
@@ -114,7 +166,7 @@ if(APPLE OR (WIN32 AND NOT STATIC))
         list(TRANSFORM WIN_DEPLOY_DLLS PREPEND "$ENV{MSYSTEM_PREFIX}/bin/")
         add_custom_command(TARGET deploy
                            POST_BUILD
-                           COMMAND ${CMAKE_COMMAND} -E copy ${WIN_DEPLOY_DLLS} "$<TARGET_FILE_DIR:monero-wallet-gui>"
+                           COMMAND ${CMAKE_COMMAND} -E copy ${WIN_DEPLOY_DLLS} "$<TARGET_FILE_DIR:dinastycoin-wallet-gui>"
                            COMMENT "Copying DLLs to target folder"
         )
     endif()
