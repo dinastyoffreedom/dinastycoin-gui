@@ -41,4 +41,6 @@ tags
 **/.DS_Store
 *.exe
 *.dll
-*.zip
+*.zip/Output/
+/dist/
+**/.DS_Store
