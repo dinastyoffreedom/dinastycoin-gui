@@ -34,3 +34,11 @@ Session.vim
 tags
 # Persistent undo
 [._]*.un~
+
+/Output/
+/dist/
+/build/
+**/.DS_Store
+*.exe
+*.dll
+*.zip
