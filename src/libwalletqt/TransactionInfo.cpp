@@ -174,3 +174,4 @@ TransactionInfo::TransactionInfo(const Monero::TransactionInfo *pimpl, QObject *
         m_subaddrIndex.insert(i);
     }
 }
+

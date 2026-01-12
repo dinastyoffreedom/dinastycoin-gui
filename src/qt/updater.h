@@ -62,3 +62,4 @@ private:
 private:
     std::vector<openpgp::public_key_block> m_maintainers;
 };
+

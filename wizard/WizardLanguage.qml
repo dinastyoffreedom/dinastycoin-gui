@@ -242,3 +242,4 @@ Rectangle {
         persistentSettings.setWritable(false);
     }
 }
+

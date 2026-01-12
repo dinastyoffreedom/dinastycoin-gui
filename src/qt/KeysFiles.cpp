@@ -169,3 +169,4 @@ QHash<int, QByteArray> WalletKeysFilesModel::roleNames() const {
     roles[AddressRole] = "address";
     return roles;
 }
+

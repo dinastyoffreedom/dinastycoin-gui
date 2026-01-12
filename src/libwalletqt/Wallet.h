@@ -500,3 +500,4 @@ private:
 
 
 #endif // WALLET_H
+

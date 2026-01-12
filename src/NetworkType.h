@@ -43,3 +43,4 @@ public:
     };
     Q_ENUM(Type)
 };
+

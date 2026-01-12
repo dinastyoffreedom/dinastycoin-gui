@@ -36,3 +36,4 @@ QPoint OSCursor::getPosition() const
 {
     return QCursor::pos();
 }
+

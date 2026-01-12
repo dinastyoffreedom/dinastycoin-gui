@@ -71,3 +71,4 @@ private:
     mutable QMutex m_proxyMutex;
     mutable FutureScheduler m_scheduler;
 };
+

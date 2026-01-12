@@ -42,3 +42,4 @@ void clipboardAdapter::setText(const QString &text) {
 QString clipboardAdapter::text() const {
     return m_pClipboard->text();
 }
+

@@ -291,3 +291,4 @@ Rectangle {
         appWindow.currentWallet.keyReuseMitigation2(persistentSettings.keyReuseMitigation2)
     }
 }
+

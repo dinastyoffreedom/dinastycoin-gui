@@ -66,3 +66,4 @@ private:
 };
 
 #endif //MONERO_GUI_WALLETLISTENERIMPL_H
+

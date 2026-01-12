@@ -41,3 +41,4 @@ bool MainApp::event (QEvent *event)
     // Pass unhandled events to base class 
     return QApplication::event(event);
 }
+

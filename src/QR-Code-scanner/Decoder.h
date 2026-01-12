@@ -47,3 +47,4 @@ private:
 private:
     quirc *m_qr;
 };
+

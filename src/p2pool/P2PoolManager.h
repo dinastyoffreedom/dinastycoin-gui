@@ -80,3 +80,4 @@ private:
 };
 
 #endif // P2POOLMANAGER_H
+

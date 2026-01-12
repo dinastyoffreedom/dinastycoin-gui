@@ -203,3 +203,4 @@ noexcept(std::is_nothrow_constructible<Callback, Callback&&>::value)
 }
 
 #endif /* SCOPE_GUARD_HPP_ */
+

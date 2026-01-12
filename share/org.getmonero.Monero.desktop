@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Monero GUI
-GenericName=Monero-GUI
-Comment=Monero GUI
+Name=Dinastycoin GUI
+GenericName=Dinastycoin-GUI
+Comment=Dinastycoin GUI
 Exec=monero-wallet-gui
 Type=Application
 Terminal=false

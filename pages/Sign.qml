@@ -435,3 +435,4 @@ Rectangle {
         console.log("Sign/verify page loaded");
     }
 }
+

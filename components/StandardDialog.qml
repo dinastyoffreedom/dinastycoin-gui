@@ -254,3 +254,4 @@ Rectangle {
         anchors.right: parent.right
     }
 }
+

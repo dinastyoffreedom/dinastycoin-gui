@@ -99,3 +99,4 @@ private:
 };
 
 #endif // MONEROSETTINGS_H
+

@@ -97,3 +97,4 @@ void TailsOS::persistXdgMime(QString filePath, QString data)
     QDir().mkpath(file.path());  // ensure directory exists
     fileWrite(file.filePath(), data);
 }
+

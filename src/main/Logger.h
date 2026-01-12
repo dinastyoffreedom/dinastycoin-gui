@@ -51,3 +51,4 @@ private:
     QString m_logFilePath;
     const QString m_userDefinedLogFilePath;
 };
+

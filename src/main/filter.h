@@ -53,3 +53,4 @@ signals:
 };
 
 #endif // FILTER_H
+

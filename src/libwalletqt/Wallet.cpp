@@ -1249,3 +1249,4 @@ void Wallet::startRefreshThread()
         throw std::runtime_error("failed to start auto refresh thread");
     }
 }
+

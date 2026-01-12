@@ -107,16 +107,16 @@ ApplicationWindow {
     property var fiatPriceAPIs: {
         return {
             "kraken": {
-                "xmrusd": "https://api.kraken.com/0/public/Ticker?pair=DCYUSD",
-                "xmreur": "https://api.kraken.com/0/public/Ticker?pair=DCYEUR"
+                "dcyusd": "https://api.kraken.com/0/public/Ticker?pair=DCYUSD",
+                "dcyeur": "https://api.kraken.com/0/public/Ticker?pair=DCYEUR"
             },
             "coingecko": {
-                "xmrusd": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=usd",
-                "xmreur": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=eur"
+                "dcyusd": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=usd",
+                "dcyeur": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=eur"
             },
             "cryptocompare": {
-                "xmrusd": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=USD",
-                "xmreur": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=EUR",
+                "dcyusd": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=USD",
+                "dcyeur": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=EUR",
             }
         }
     }
@@ -430,8 +430,8 @@ ApplicationWindow {
         leftPanel.balanceString = balance
         leftPanel.balanceUnlockedString = balanceU
         if (middlePanel.state === "Account") {
-            middlePanel.accountView.balanceAllText = walletManager.displayAmount(appWindow.currentWallet.balanceAll()) + " XMR";
-            middlePanel.accountView.unlockedBalanceAllText = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) + " XMR";
+            middlePanel.accountView.balanceAllText = walletManager.displayAmount(appWindow.currentWallet.balanceAll()) + " DCY";
+            middlePanel.accountView.unlockedBalanceAllText = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) + " DCY";
         }
     }
 
@@ -973,10 +973,10 @@ ApplicationWindow {
             const addresses = recipients.map(function (recipient) {
                 return recipient.address;
             });
-            const amountsxmr = recipients.map(function (recipient) {
+            const amountsDCY = recipients.map(function (recipient) {
                 return recipient.amount;
             });
-            currentWallet.createTransactionAsync(addresses, paymentId, amountsxmr, mixinCount, priority);
+            currentWallet.createTransactionAsync(addresses, paymentId, amountsDCY, mixinCount, priority);
         }
     }
 
@@ -1249,11 +1249,11 @@ ApplicationWindow {
                 return;
             }
 
-            var key = currency === "xmreur" ? "XXMRZEUR" : "XXMRZUSD";
+            var key = currency === "dcyeur" ? "XDCYZEUR" : "XDCYZUSD";
             var ticker = resp.result[key]["c"][0];
             return ticker;
         } else if(url.startsWith("https://api.coingecko.com/api/v3/")){
-            var key = currency === "xmreur" ? "eur" : "usd";
+            var key = currency === "dcyeur" ? "eur" : "usd";
             if(!resp.hasOwnProperty("dinastycoin") || !resp["dinastycoin"].hasOwnProperty(key)){
                 appWindow.fiatApiError("Coingecko API has error(s)");
                 return;
@@ -1340,9 +1340,9 @@ ApplicationWindow {
 
     function fiatApiCurrencySymbol() {
         switch (persistentSettings.fiatPriceCurrency) {
-            case "xmrusd":
+            case "dcyusd":
                 return "USD";
-            case "xmreur":
+            case "dcyeur":
                 return "EUR";
             default:
                 console.error("unsupported currency", persistentSettings.fiatPriceCurrency);
@@ -1359,7 +1359,7 @@ ApplicationWindow {
         return (amount * ticker).toFixed(2);
     }
 
-    function fiatApiConvertToXMR(amount) {
+    function fiatApiConvertToDCY(amount) {
         const ticker = appWindow.fiatPrice;
         if(ticker <= 0){
             fiatApiError("Invalid ticker value: " + ticker);
@@ -1526,7 +1526,7 @@ ApplicationWindow {
         property bool fiatPriceEnabled: false
         property bool fiatPriceToggle: false
         property string fiatPriceProvider: "kraken"
-        property string fiatPriceCurrency: "xmrusd"
+        property string fiatPriceCurrency: "DCYusd"
 
         property string proxyAddress: "127.0.0.1:9050"
         property bool proxyEnabled: isTails
@@ -2499,3 +2499,4 @@ ApplicationWindow {
         proxyAddress: persistentSettings.getProxyAddress()
     }
 }
+

@@ -89,3 +89,4 @@ QHash<int, QByteArray> SubaddressModel::roleNames() const
     }
     return roleNames;
 }
+

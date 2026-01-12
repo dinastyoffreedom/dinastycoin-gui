@@ -283,3 +283,4 @@ bool TransactionHistorySortFilterModel::lessThan(const QModelIndex &source_left,
 {
     return QSortFilterProxyModel::lessThan(source_left, source_right);
 }
+

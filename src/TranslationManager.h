@@ -55,3 +55,4 @@ private:
 };
 
 #endif // TRANSLATIONMANAGER_H
+

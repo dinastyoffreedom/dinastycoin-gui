@@ -118,3 +118,4 @@ UnsignedTransaction::~UnsignedTransaction()
 {
     delete m_pimpl;
 }
+

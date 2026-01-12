@@ -13,3 +13,4 @@ Rectangle {
         whiteColor: MoneroComponents.Style._w_appWindowBorderColor
     }
 }
+

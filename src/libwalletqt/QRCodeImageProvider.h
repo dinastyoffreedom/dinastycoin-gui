@@ -38,3 +38,4 @@ public:
   static QImage genQrImage(const QString &id, QSize *size);
 };
 
+

@@ -570,3 +570,4 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     QObject::connect(eventFilter, SIGNAL(uriHandler(QUrl)), ipc, SLOT(parseCommand(QUrl)));
     return app.exec();
 }
+

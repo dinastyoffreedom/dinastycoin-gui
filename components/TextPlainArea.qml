@@ -46,3 +46,4 @@ TextArea {
         ColorAnimation { properties: "color"; easing.type: Easing.InOutQuad; duration: 750 }
     }
 }
+

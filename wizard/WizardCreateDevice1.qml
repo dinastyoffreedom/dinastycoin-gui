@@ -307,3 +307,4 @@ Rectangle {
         wizardController.walletCreatedFromDevice.disconnect(onCreateWalletFromDeviceCompleted);
     }
 }
+

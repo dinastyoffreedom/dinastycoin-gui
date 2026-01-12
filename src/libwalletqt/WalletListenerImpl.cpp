@@ -95,3 +95,4 @@ Monero::optional<std::string> WalletListenerImpl::onDevicePassphraseRequest(bool
     qDebug() << __FUNCTION__;
     return m_phelper.onDevicePassphraseRequest(on_device);
 }
+

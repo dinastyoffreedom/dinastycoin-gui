@@ -207,3 +207,4 @@ QtObject {
     property string _w_historyHeaderTextColor: "#515151"
     property var _w_accountColors: ["#6E513C", "#6E513C", "#842129", "#458421", "#742184", "#291DBE", "#846F21", "#217F84", "#696969"]
 }
+

@@ -165,3 +165,4 @@ Rectangle {
         ScriptAction { script: if (under) under.numSelectedChildren += checked > 0 ? -1 : 1 }
     }
 }
+

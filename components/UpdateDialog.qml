@@ -202,3 +202,4 @@ Popup {
         proxyAddress: persistentSettings.getProxyAddress()
     }
 }
+

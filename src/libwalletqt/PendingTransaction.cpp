@@ -98,3 +98,4 @@ PendingTransaction::PendingTransaction(Monero::PendingTransaction *pt, QObject *
 {
 
 }
+

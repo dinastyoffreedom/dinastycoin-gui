@@ -46,3 +46,4 @@ private:
 };
 
 #endif // CLIPBOARDADAPTER_H
+

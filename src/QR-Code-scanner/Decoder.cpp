@@ -97,3 +97,4 @@ std::vector<std::string> QrDecoder::decodeGrayscale8(const QImage &image)
 
     return result;
 }
+

@@ -95,3 +95,4 @@ QHash<int, QByteArray> SubaddressAccountModel::roleNames() const
     }
     return roleNames;
 }
+

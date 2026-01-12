@@ -131,3 +131,4 @@ void IPC::parseCommand(QString cmdString){
 void IPC::emitUriHandler(QString uriString){
     emit uriHandler(uriString);
 }
+

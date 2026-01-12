@@ -227,7 +227,7 @@ Rectangle {
                 Layout.maximumWidth: 100
                 labelText: qsTr("Currency") + translationManager.emptyString
                 labelFontSize: 14
-                currentIndex: persistentSettings.fiatPriceCurrency === "xmrusd" ? 0 : 1
+                currentIndex: persistentSettings.fiatPriceCurrency === "DCYusd" ? 0 : 1
                 dataModel: fiatPriceCurrencyModel
                 onChanged: {
                     var obj = dataModel.get(currentIndex);
@@ -315,11 +315,11 @@ Rectangle {
     ListModel {
         id: fiatPriceCurrencyModel
         ListElement {
-            data: "xmrusd"
+            data: "DCYusd"
             column1: "USD"
         }
         ListElement {
-            data: "xmreur"
+            data: "DCYeur"
             column1: "EUR"
         }
     }
@@ -344,4 +344,5 @@ Rectangle {
         console.log('SettingsLayout loaded');
     }
 }
+
 

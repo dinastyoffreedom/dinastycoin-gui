@@ -213,7 +213,7 @@ RUN mkdir ${NEW_SDK_ROOT} \
     && cp -r ${ANDROID_SDK_ROOT}/build-tools ${NEW_SDK_ROOT}
 
 CMD set -ex \
-    && cd /monero-gui \
+    && cd /dinastycoin-gui \
     && mkdir -p build/Android/release \
     && cd build/Android/release \
     && cmake \
@@ -227,13 +227,13 @@ CMD set -ex \
     -DANDROID_TOOLCHAIN=clang \
     -DBoost_USE_STATIC_RUNTIME=ON \
     -DLRELEASE_PATH="${PREFIX}/bin" \
-    -DQT_ANDROID_APPLICATION_BINARY="monero-wallet-gui" \
+    -DQT_ANDROID_APPLICATION_BINARY="dinastycoin-wallet-gui" \
     -DANDROID_SDK="${NEW_SDK_ROOT}" \
     -DWITH_SCANNER=ON \
     -DWITH_DESKTOP_ENTRY=OFF \
     ../../.. \
     && PATH=${HOST_PATH} make generate_translations_header \
-    && sed -i -e "s#../monero/external/randomx/librandomx.a##" src/CMakeFiles/monero-wallet-gui.dir/link.txt \
-    && sed -i -e "s#-lm#-lm ../monero/external/randomx/librandomx.a#" src/CMakeFiles/monero-wallet-gui.dir/link.txt \
+    && sed -i -e "s#../dinastycoin/external/randomx/librandomx.a##" src/CMakeFiles/dinastycoin-wallet-gui.dir/link.txt \
+    && sed -i -e "s#-lm#-lm ../dinastycoin/external/randomx/librandomx.a#" src/CMakeFiles/dinastycoin-wallet-gui.dir/link.txt \
     && make -j${THREADS} -C src \
     && make -j${THREADS} apk

@@ -182,3 +182,4 @@ std::shared_ptr<abstract_http_client> Network::newClient() const
     }
     return client;
 }
+

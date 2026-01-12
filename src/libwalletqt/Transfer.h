@@ -50,3 +50,4 @@ public:
 };
 
 #endif // TRANSACTIONINFO_H
+

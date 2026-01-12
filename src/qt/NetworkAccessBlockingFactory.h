@@ -65,3 +65,4 @@ public:
         return new BlockedNetworkAccessManager(parent);
     }
 };
+

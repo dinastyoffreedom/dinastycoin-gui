@@ -98,3 +98,4 @@ QHash<int, QByteArray> AddressBookModel::roleNames() const
 
     return roleNames;
 }
+

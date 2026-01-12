@@ -611,3 +611,4 @@ void WalletManager::setProxyAddress(QString address)
         emit proxyAddressChanged();
     });
 }
+

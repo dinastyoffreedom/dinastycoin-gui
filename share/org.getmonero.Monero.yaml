@@ -1,4 +1,4 @@
-app-id: org.getmonero.Monero
+app-id: dinastycoin.org
 runtime: org.kde.Platform
 runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
@@ -8,8 +8,8 @@ finish-args:
   - --socket=x11
   - --socket=wayland
   - --device=all
-  - --filesystem=~/Monero:create
-  - --persist=.bitmonero
+  - --filesystem=~/dinastycoin:create
+  - --persist=.bitdinastycoin
 
 cleanup:
   - /include
@@ -20,7 +20,7 @@ cleanup:
   - '*.a'
   - '*.la'
 
-command: monero-wallet-gui
+command: dinastycoin-wallet-gui
 modules:
   - name: protobuf
     buildsystem: cmake-ninja
@@ -109,7 +109,7 @@ modules:
     post-install:
       - install -Dm755 p2pool $FLATPAK_DEST/bin/p2pool
 
-  - name: monero-gui
+  - name: dinastycoin-gui
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -128,6 +128,6 @@ modules:
       - type: dir
         path: ../
     post-install:
-      - install -Dpm644 share/org.getmonero.Monero.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
-      - install -Dpm644 share/org.getmonero.Monero.metainfo.xml $FLATPAK_DEST/share/metainfo/$FLATPAK_ID.metainfo.xml
+      - install -Dpm644 share/org.getdinastycoin.dinastycoin.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
+      - install -Dpm644 share/org.getdinastycoin.dinastycoin.metainfo.xml $FLATPAK_DEST/share/metainfo/$FLATPAK_ID.metainfo.xml
       - for x in 16 24 32 48 64 96 128 256; do install -Dpm644 images/appicons/${x}x${x}.png $FLATPAK_DEST/share/icons/hicolor/${x}x${x}/apps/$FLATPAK_ID.png; done

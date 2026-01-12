@@ -414,3 +414,4 @@ DaemonManager::~DaemonManager()
 {
     m_scheduler.shutdownWaitForFinished();
 }
+

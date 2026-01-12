@@ -84,3 +84,4 @@ Item {
         opacity: root.fontAwesomeFallbackOpacity
     }
 }
+

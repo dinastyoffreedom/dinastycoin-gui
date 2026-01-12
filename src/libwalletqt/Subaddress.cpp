@@ -95,3 +95,4 @@ quint64 Subaddress::count() const
 
     return m_rows.size();
 }
+

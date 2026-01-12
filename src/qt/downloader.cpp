@@ -240,3 +240,4 @@ void Downloader::setProxyAddress(QString address)
         emit proxyAddressChanged();
     });
 }
+

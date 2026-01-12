@@ -90,3 +90,4 @@ QrCodeScanner::~QrCodeScanner()
 
 }
 
+

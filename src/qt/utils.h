@@ -46,3 +46,4 @@ const static QRegularExpression reURI = QRegularExpression("^\\w+:\\/\\/([\\w+\\
 QString randomUserAgent();
 
 #endif // UTILS_H
+

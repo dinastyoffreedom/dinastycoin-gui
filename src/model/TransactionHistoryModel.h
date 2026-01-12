@@ -104,3 +104,4 @@ private:
 };
 
 #endif // TRANSACTIONHISTORYMODEL_H
+

@@ -87,3 +87,4 @@ quint64 SubaddressAccount::count() const
 
     return m_rows.size();
 }
+

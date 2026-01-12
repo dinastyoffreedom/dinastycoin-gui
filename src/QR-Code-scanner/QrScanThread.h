@@ -64,3 +64,4 @@ private:
     QList<QVideoFrame> m_queue;
 };
 #endif
+

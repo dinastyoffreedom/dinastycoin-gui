@@ -57,3 +57,4 @@ QImage QRCodeImageProvider::requestImage(const QString &id, QSize *size, const Q
 {
   return genQrImage(id, size);
 }
+

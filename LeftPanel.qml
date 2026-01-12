@@ -230,7 +230,7 @@ Rectangle {
                         if (persistentSettings.fiatPriceEnabled && persistentSettings.fiatPriceToggle) {
                             return appWindow.fiatApiCurrencySymbol();
                         } else {
-                            return "XMR"
+                            return "DCY"
                         }
                     }
                     color: MoneroComponents.Style.blackTheme ? "white" : "black"
@@ -554,3 +554,4 @@ Rectangle {
         }
     }
 }
+

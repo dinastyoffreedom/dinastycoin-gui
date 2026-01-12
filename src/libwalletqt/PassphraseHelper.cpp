@@ -68,3 +68,4 @@ void PassphraseHelper::onPassphraseEntered(const QString &passphrase, bool enter
 
     m_cond_pass.wakeAll();
 }
+

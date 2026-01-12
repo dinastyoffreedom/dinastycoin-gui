@@ -99,3 +99,4 @@ QString TranslationManager::emptyString()
     return "";
 }
 
+

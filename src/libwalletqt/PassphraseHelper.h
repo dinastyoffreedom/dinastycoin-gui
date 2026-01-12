@@ -72,3 +72,4 @@ private:
 };
 
 #endif //MONERO_GUI_PASSPHRASEHELPER_H
+

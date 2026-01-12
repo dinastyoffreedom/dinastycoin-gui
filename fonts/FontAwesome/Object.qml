@@ -6,3 +6,4 @@ QtObject {
 
     property list<QtObject> __children: [QtObject {}]
 }
+

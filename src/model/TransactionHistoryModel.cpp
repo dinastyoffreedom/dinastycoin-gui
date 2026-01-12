@@ -179,3 +179,4 @@ QHash<int, QByteArray> TransactionHistoryModel::roleNames() const
 }
 
 
+

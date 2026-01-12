@@ -380,3 +380,4 @@ message_armored::operator epee::span<const uint8_t>() const
 }
 
 } // namespace openpgp
+

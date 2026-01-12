@@ -74,3 +74,4 @@ Object {
     property string signOutAlt : "\uf2f5"
     property string times : "\uf00d"
 }
+

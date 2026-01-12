@@ -256,3 +256,4 @@ Rectangle {
         anchors.left: borderLeft.right
     }
 }
+

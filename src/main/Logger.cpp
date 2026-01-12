@@ -133,3 +133,4 @@ QString Logger::logFilePath() const
 {
     return m_logFilePath;
 }
+

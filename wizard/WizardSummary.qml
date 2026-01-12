@@ -85,3 +85,4 @@ ColumnLayout {
         value: Utils.netTypeToString()
     }
 }
+

@@ -327,3 +327,4 @@ void OSHelper::openSeedTemplate() const
     QFile::copy(":/wizard/template.pdf", QDir::tempPath() + "/seed_template.pdf");
     openFile(QDir::tempPath() + "/seed_template.pdf");
 }
+

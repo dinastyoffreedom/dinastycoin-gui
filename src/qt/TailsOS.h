@@ -21,3 +21,4 @@ public:
 };
 
 #endif // TAILSOS_H
+

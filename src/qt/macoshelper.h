@@ -43,3 +43,4 @@ public:
 };
 
 #endif //MACOSHELPER_H
+

@@ -96,3 +96,4 @@ private:
     QString m_proxyAddress;
     mutable FutureScheduler m_scheduler;
 };
+

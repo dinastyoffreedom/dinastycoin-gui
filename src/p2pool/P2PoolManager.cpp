@@ -258,3 +258,4 @@ P2PoolManager::P2PoolManager(QObject *parent)
 P2PoolManager::~P2PoolManager() {
     m_scheduler.shutdownWaitForFinished();
 }
+

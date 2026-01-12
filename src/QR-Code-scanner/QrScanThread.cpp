@@ -88,3 +88,4 @@ void QrScanThread::run()
     }
 }
 
+

@@ -288,3 +288,4 @@ MoneroSettings::MoneroSettings(QObject *parent) :
     QObject(parent)
 {
 }
+

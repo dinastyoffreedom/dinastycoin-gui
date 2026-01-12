@@ -51,3 +51,4 @@ public:
 
 //Q_DECLARE_METATYPE(OSCursor)
 #endif // OSCURSOR_H
+

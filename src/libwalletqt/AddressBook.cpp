@@ -148,3 +148,4 @@ void AddressBook::setDescription(int index, const QString &description)
          getAll();
      }
  }
+

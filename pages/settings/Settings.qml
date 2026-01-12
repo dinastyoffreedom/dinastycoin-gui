@@ -175,3 +175,4 @@ ColumnLayout {
         console.log("Settings page loaded");
     }
 }
+

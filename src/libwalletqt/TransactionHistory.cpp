@@ -222,3 +222,4 @@ QString TransactionHistory::writeCSV(quint32 accountIndex, QString out)
     data.close();
     return fn;
 }
+

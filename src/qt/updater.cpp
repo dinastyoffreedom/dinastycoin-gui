@@ -174,3 +174,4 @@ QString Updater::verifySignature(const epee::span<const uint8_t> data, const ope
 
     throw std::runtime_error("not signed by a maintainer");
 }
+
