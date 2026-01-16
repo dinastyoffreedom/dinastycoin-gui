@@ -142,4 +142,3 @@ Rectangle {
         understoodCheckbox.checked = false;
     }
 }
-

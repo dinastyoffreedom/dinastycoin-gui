@@ -41,7 +41,7 @@ SolidCompression=yes
 WizardStyle=modern dynamic
 LicenseFile=LICENSE
 InfoBeforeFile=ReadMe.rtf
-WizardImageFile=WelcomeImage.bmp
+WizardImageFile=FinishImage.bmp
 WizardSmallImageFile=WizardSmallImage.bmp
 
 [Languages]

@@ -47,7 +47,7 @@
 
 static const int settingsWriteDelay = 500; // ms
 
-class MoneroSettings : public QObject, public QQmlParserStatus
+class DinastycoinSettings : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
@@ -56,7 +56,7 @@ class MoneroSettings : public QObject, public QQmlParserStatus
     Q_PROPERTY(QString portableFolderName READ portableFolderName CONSTANT)
 
 public:
-    explicit MoneroSettings(QObject *parent = nullptr);
+    explicit DinastycoinSettings(QObject *parent = nullptr);
 
     QString fileName() const;
     void setFileName(const QString &fileName);
@@ -98,5 +98,4 @@ private:
     int m_timerId = 0;
 };
 
-#endif // MONEROSETTINGS_H
-
+#endif // DINASTYCOINSETTINGS_H

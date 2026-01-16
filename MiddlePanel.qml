@@ -34,7 +34,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 
 import "./pages"
 import "./pages/settings"
@@ -256,4 +256,3 @@ Rectangle {
         anchors.left: borderLeft.right
     }
 }
-

@@ -32,7 +32,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 
 import "../components" as MoneroComponents
-import moneroComponents.Clipboard 1.0
+import dinastycoinComponents.Clipboard 1.0
 
 import "../js/TxUtils.js" as TxUtils
 
@@ -275,4 +275,3 @@ Rectangle {
 
     }
 }
-

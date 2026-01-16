@@ -157,9 +157,32 @@ bool isTails = false;
 bool isDesktop = false;
 bool isOpenGL = true;
 bool isARM = false;
+// Custom message handler to filter out "recursive rearrange" warnings
+void myMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    if (msg.contains("recursive rearrange"))
+        return;
 
+    switch (type) {
+    case QtDebugMsg:
+        qDebug() << msg;
+        break;
+    case QtInfoMsg:
+        qInfo() << msg;
+        break;
+    case QtWarningMsg:
+        qWarning() << msg;
+        break;
+    case QtCriticalMsg:
+        qCritical() << msg;
+        break;
+    case QtFatalMsg:
+        qFatal("%s", msg.toLocal8Bit().constData());
+    }
+}
 int main(int argc, char *argv[])
 {
+    qInstallMessageHandler(myMessageHandler);
     Q_INIT_RESOURCE(translations);
 
     // platform dependant settings
@@ -200,7 +223,7 @@ int main(int argc, char *argv[])
     // enable High DPI scaling
     qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
 
-    // Turn off colors in monerod log output.
+    // Turn off colors in dinastycoind log output.
     qputenv("TERM", "goaway");
 
 #if defined(Q_OS_MACOS)
@@ -229,15 +252,15 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    app.setApplicationName("monero-core");
-    app.setOrganizationDomain("getmonero.org");
-    app.setOrganizationName("monero-project");
+    app.setApplicationName("dinastycoin-core");
+    app.setOrganizationDomain("dinastycoin.com");
+    app.setOrganizationName("dinastycoin club");
 
     // Ask to enable Tails OS persistence mode, it affects:
     // - Log file location
-    // - QML Settings file location (monero-core.conf)
+    // - QML Settings file location (mdinsatycoinonero-core.conf)
     // - Default wallets path
-    // Target directory is: ~/Persistent/Monero
+    // Target directory is: ~/Persistent/dinastycoin
     if (isTails) {
         if (!TailsOS::detectDataPersistence())
             TailsOS::showDataPersistenceDisabledWarning();
@@ -253,9 +276,9 @@ int main(int argc, char *argv[])
     #endif
 
     if(isTails && TailsOS::usePersistence){
-        moneroAccountsDir = QDir::homePath() + "/Persistent/Monero/wallets";
+        moneroAccountsDir = QDir::homePath() + "/Persistent/dinastycoin/wallets";
     } else if (!moneroAccountsRootDir.empty()) {
-        moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Monero/wallets";
+        moneroAccountsDir = moneroAccountsRootDir.at(0) + "/dinastycoin/wallets";
     } else {
         qCritical() << "Error: accounts root directory could not be set";
         return 1;
@@ -377,60 +400,60 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
                                    << " - dpi: " << dpi << " - ratio:" << calculated_ratio;
 
     // registering types for QML
-    qmlRegisterType<clipboardAdapter>("moneroComponents.Clipboard", 1, 0, "Clipboard");
-    qmlRegisterType<Downloader>("moneroComponents.Downloader", 1, 0, "Downloader");
-    qmlRegisterType<Network>("moneroComponents.Network", 1, 0, "Network");
-    qmlRegisterType<WalletKeysFilesModel>("moneroComponents.WalletKeysFilesModel", 1, 0, "WalletKeysFilesModel");
-    qmlRegisterType<WalletManager>("moneroComponents.WalletManager", 1, 0, "WalletManager");
+    qmlRegisterType<clipboardAdapter>("dinastycoinComponents.Clipboard", 1, 0, "Clipboard");
+    qmlRegisterType<Downloader>("dinastycoinComponents.Downloader", 1, 0, "Downloader");
+    qmlRegisterType<Network>("dinastycoinComponents.Network", 1, 0, "Network");
+    qmlRegisterType<WalletKeysFilesModel>("dinastycoinComponents.WalletKeysFilesModel", 1, 0, "WalletKeysFilesModel");
+    qmlRegisterType<WalletManager>("dinastycoinComponents.WalletManager", 1, 0, "WalletManager");
 
     // Temporary Qt.labs.settings replacement
-    qmlRegisterType<MoneroSettings>("moneroComponents.Settings", 1, 0, "MoneroSettings");
+    qmlRegisterType<DinastycoinSettings>("dinastycoinComponents.Settings", 1, 0, "DinastycoinSettings");
 
-    qmlRegisterUncreatableType<Wallet>("moneroComponents.Wallet", 1, 0, "Wallet", "Wallet can't be instantiated directly");
+    qmlRegisterUncreatableType<Wallet>("dinastycoinComponents.Wallet", 1, 0, "Wallet", "Wallet can't be instantiated directly");
 
 
-    qmlRegisterUncreatableType<PendingTransaction>("moneroComponents.PendingTransaction", 1, 0, "PendingTransaction",
+    qmlRegisterUncreatableType<PendingTransaction>("dinastycoinComponents.PendingTransaction", 1, 0, "PendingTransaction",
                                                    "PendingTransaction can't be instantiated directly");
 
-    qmlRegisterUncreatableType<UnsignedTransaction>("moneroComponents.UnsignedTransaction", 1, 0, "UnsignedTransaction",
+    qmlRegisterUncreatableType<UnsignedTransaction>("dinastycoinComponents.UnsignedTransaction", 1, 0, "UnsignedTransaction",
                                                    "UnsignedTransaction can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TranslationManager>("moneroComponents.TranslationManager", 1, 0, "TranslationManager",
+    qmlRegisterUncreatableType<TranslationManager>("dinastycoinComponents.TranslationManager", 1, 0, "TranslationManager",
                                                    "TranslationManager can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionHistoryModel>("moneroComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
+    qmlRegisterUncreatableType<TransactionHistoryModel>("dinastycoinComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
                                                         "TransactionHistoryModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionHistorySortFilterModel>("moneroComponents.TransactionHistorySortFilterModel", 1, 0, "TransactionHistorySortFilterModel",
+    qmlRegisterUncreatableType<TransactionHistorySortFilterModel>("dinastycoinComponents.TransactionHistorySortFilterModel", 1, 0, "TransactionHistorySortFilterModel",
                                                         "TransactionHistorySortFilterModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionHistory>("moneroComponents.TransactionHistory", 1, 0, "TransactionHistory",
+    qmlRegisterUncreatableType<TransactionHistory>("dinastycoinComponents.TransactionHistory", 1, 0, "TransactionHistory",
                                                         "TransactionHistory can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionInfo>("moneroComponents.TransactionInfo", 1, 0, "TransactionInfo",
+    qmlRegisterUncreatableType<TransactionInfo>("dinastycoinComponents.TransactionInfo", 1, 0, "TransactionInfo",
                                                         "TransactionHistory can't be instantiated directly");
 #ifndef Q_OS_IOS
-    qmlRegisterUncreatableType<DaemonManager>("moneroComponents.DaemonManager", 1, 0, "DaemonManager",
+    qmlRegisterUncreatableType<DaemonManager>("dinastycoinComponents.DaemonManager", 1, 0, "DaemonManager",
                                                    "DaemonManager can't be instantiated directly");
-    qmlRegisterUncreatableType<P2PoolManager>("moneroComponents.P2PoolManager", 1, 0, "P2PoolManager",
+    qmlRegisterUncreatableType<P2PoolManager>("dinastycoinComponents.P2PoolManager", 1, 0, "P2PoolManager",
                                                    "P2PoolManager can't be instantiated directly");
 #endif
-    qmlRegisterUncreatableType<AddressBookModel>("moneroComponents.AddressBookModel", 1, 0, "AddressBookModel",
+    qmlRegisterUncreatableType<AddressBookModel>("dinastycoinComponents.AddressBookModel", 1, 0, "AddressBookModel",
                                                         "AddressBookModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<AddressBook>("moneroComponents.AddressBook", 1, 0, "AddressBook",
+    qmlRegisterUncreatableType<AddressBook>("dinastycoinComponents.AddressBook", 1, 0, "AddressBook",
                                                         "AddressBook can't be instantiated directly");
 
-    qmlRegisterUncreatableType<SubaddressModel>("moneroComponents.SubaddressModel", 1, 0, "SubaddressModel",
+    qmlRegisterUncreatableType<SubaddressModel>("dinastycoinComponents.SubaddressModel", 1, 0, "SubaddressModel",
                                                         "SubaddressModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<Subaddress>("moneroComponents.Subaddress", 1, 0, "Subaddress",
+    qmlRegisterUncreatableType<Subaddress>("dinastycoinComponents.Subaddress", 1, 0, "Subaddress",
                                                         "Subaddress can't be instantiated directly");
 
-    qmlRegisterUncreatableType<SubaddressAccountModel>("moneroComponents.SubaddressAccountModel", 1, 0, "SubaddressAccountModel",
+    qmlRegisterUncreatableType<SubaddressAccountModel>("dinastycoinComponents.SubaddressAccountModel", 1, 0, "SubaddressAccountModel",
                                                         "SubaddressAccountModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<SubaddressAccount>("moneroComponents.SubaddressAccount", 1, 0, "SubaddressAccount",
+    qmlRegisterUncreatableType<SubaddressAccount>("dinastycoinComponents.SubaddressAccount", 1, 0, "SubaddressAccount",
                                                         "SubaddressAccount can't be instantiated directly");
 
     qRegisterMetaType<PendingTransaction::Priority>();
@@ -438,10 +461,10 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     qRegisterMetaType<TransactionHistoryModel::TransactionInfoRole>();
 
     qRegisterMetaType<NetworkType::Type>();
-    qmlRegisterType<NetworkType>("moneroComponents.NetworkType", 1, 0, "NetworkType");
+    qmlRegisterType<NetworkType>("dinastycoinComponents.NetworkType", 1, 0, "NetworkType");
 
 #ifdef WITH_SCANNER
-    qmlRegisterType<QrCodeScanner>("moneroComponents.QRCodeScanner", 1, 0, "QRCodeScanner");
+    qmlRegisterType<QrCodeScanner>("dinastycoinComponents.QRCodeScanner", 1, 0, "QRCodeScanner");
 #endif
 
     QQmlApplicationEngine engine;
@@ -503,7 +526,7 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     if (accountName.isEmpty())
         accountName = qgetenv("USERNAME"); // Windows
     if (accountName.isEmpty())
-        accountName = "My monero Account";
+        accountName = "My Dinastycoin Account";
 
     engine.rootContext()->setContextProperty("defaultAccountName", accountName);
     engine.rootContext()->setContextProperty("homePath", QDir::homePath());
@@ -570,4 +593,3 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     QObject::connect(eventFilter, SIGNAL(uriHandler(QUrl)), ipc, SLOT(parseCommand(QUrl)));
     return app.exec();
 }
-

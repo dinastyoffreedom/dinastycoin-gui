@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
 import "../components" as MoneroComponents
-import moneroComponents.Clipboard 1.0
+import dinastycoinComponents.Clipboard 1.0
 
 Rectangle {
     property alias panelHeight: mainLayout.height
@@ -291,4 +291,3 @@ Rectangle {
         appWindow.currentWallet.keyReuseMitigation2(persistentSettings.keyReuseMitigation2)
     }
 }
-

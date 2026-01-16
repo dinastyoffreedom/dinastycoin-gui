@@ -53,4 +53,3 @@ PlatformLabs.MenuBar {
     }
 }
 
-

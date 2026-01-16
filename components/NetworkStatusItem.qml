@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 import "../components" as MoneroComponents
 
 Rectangle {
@@ -212,4 +212,3 @@ Rectangle {
         }
     }
 }
-

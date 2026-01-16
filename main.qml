@@ -37,16 +37,16 @@ import QtGraphicalEffects 1.0
 
 import FontAwesome 1.0
 
-import moneroComponents.Network 1.0
-import moneroComponents.Wallet 1.0
-import moneroComponents.WalletManager 1.0
-import moneroComponents.PendingTransaction 1.0
-import moneroComponents.NetworkType 1.0
-import moneroComponents.Settings 1.0
-import moneroComponents.P2PoolManager 1.0
+import dinastycoinComponents.Network 1.0
+import dinastycoinComponents.Wallet 1.0
+import dinastycoinComponents.WalletManager 1.0
+import dinastycoinComponents.PendingTransaction 1.0
+import dinastycoinComponents.NetworkType 1.0
+import dinastycoinComponents.Settings 1.0
+import dinastycoinComponents.P2PoolManager 1.0
 
 import "components"
-import "components" as MoneroComponents
+import "components" as DinastycoinComponents
 import "components/effects" as MoneroEffects
 import "pages/merchant" as MoneroMerchant
 import "wizard"
@@ -107,16 +107,16 @@ ApplicationWindow {
     property var fiatPriceAPIs: {
         return {
             "kraken": {
-                "dcyusd": "https://api.kraken.com/0/public/Ticker?pair=DCYUSD",
-                "dcyeur": "https://api.kraken.com/0/public/Ticker?pair=DCYEUR"
+                "DCYusd": "https://api.kraken.com/0/public/Ticker?pair=DCYUSD",
+                "DCYeur": "https://api.kraken.com/0/public/Ticker?pair=DCYEUR"
             },
             "coingecko": {
-                "dcyusd": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=usd",
-                "dcyeur": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=eur"
+                "DCYusd": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=usd",
+                "DCYeur": "https://api.coingecko.com/api/v3/simple/price?ids=dinastycoin&vs_currencies=eur"
             },
             "cryptocompare": {
-                "dcyusd": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=USD",
-                "dcyeur": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=EUR",
+                "DCYusd": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=USD",
+                "DCYeur": "https://min-api.cryptocompare.com/data/price?fsym=DCY&tsyms=EUR",
             }
         }
     }
@@ -1229,7 +1229,7 @@ ApplicationWindow {
     height: screenAvailableHeight > maxWindowHeight
         ? maxWindowHeight
         : Math.min(screenAvailableHeight, 700)
-    color: MoneroComponents.Style.appWindowBackgroundColor
+    color: DinastycoinComponents.Style.appWindowBackgroundColor
     flags: persistentSettings.customDecorations ? Windows.flagsCustomDecorations : Windows.flags
 
     Timer {
@@ -1249,11 +1249,11 @@ ApplicationWindow {
                 return;
             }
 
-            var key = currency === "dcyeur" ? "XDCYZEUR" : "XDCYZUSD";
+            var key = currency === "DCYeur" ? "XDCYZEUR" : "XDCYZUSD";
             var ticker = resp.result[key]["c"][0];
             return ticker;
         } else if(url.startsWith("https://api.coingecko.com/api/v3/")){
-            var key = currency === "dcyeur" ? "eur" : "usd";
+            var key = currency === "DCYeur" ? "eur" : "usd";
             if(!resp.hasOwnProperty("dinastycoin") || !resp["dinastycoin"].hasOwnProperty(key)){
                 appWindow.fiatApiError("Coingecko API has error(s)");
                 return;
@@ -1340,9 +1340,9 @@ ApplicationWindow {
 
     function fiatApiCurrencySymbol() {
         switch (persistentSettings.fiatPriceCurrency) {
-            case "dcyusd":
+            case "DCYusd":
                 return "USD";
-            case "dcyeur":
+            case "DCYeur":
                 return "EUR";
             default:
                 console.error("unsupported currency", persistentSettings.fiatPriceCurrency);
@@ -1455,7 +1455,7 @@ ApplicationWindow {
         remoteNodesModel.initialize();
     }
 
-    MoneroSettings {
+    DinastycoinSettings {
         id: persistentSettings
         fileName: {
             if(isTails && tailsUsePersistence)
@@ -1517,7 +1517,7 @@ ApplicationWindow {
         property bool lockOnUserInActivity: true
         property int walletMode: 2
         property int lockOnUserInActivityInterval: 10  // minutes
-        property bool blackTheme: MoneroComponents.Style.blackTheme
+        property bool blackTheme: DinastycoinComponents.Style.blackTheme
         property bool checkForUpdates: true
         property bool autosave: true
         property int autosaveMinutes: 10
@@ -1555,7 +1555,7 @@ ApplicationWindow {
         }
 
         Component.onCompleted: {
-            MoneroComponents.Style.blackTheme = persistentSettings.blackTheme
+            DinastycoinComponents.Style.blackTheme = persistentSettings.blackTheme
         }
     }
 
@@ -1713,7 +1713,7 @@ ApplicationWindow {
         }
     }
 
-    MoneroComponents.UpdateDialog {
+    DinastycoinComponents.UpdateDialog {
         id: updateDialog
 
         allowed: !passwordDialog.visible && !inputDialog.visible && !splash.visible
@@ -1721,7 +1721,7 @@ ApplicationWindow {
         y: (parent.height - height) / 2
     }
 
-    MoneroComponents.RemoteNodeDialog {
+    DinastycoinComponents.RemoteNodeDialog {
         id: remoteNodeDialog
     }
 
@@ -1977,7 +1977,7 @@ ApplicationWindow {
                 anchors.centerIn: parent
                 visible: persistentSettings.customDecorations
                 image: "qrc:///images/resize.png"
-                color: MoneroComponents.Style.defaultFontColor
+                color: DinastycoinComponents.Style.defaultFontColor
                 width: 12
                 height: 12
                 opacity: (parent.containsMouse || parent.pressed) ? 0.5 : 1.0
@@ -2049,7 +2049,7 @@ ApplicationWindow {
                 source: "qrc:///images/tip.png"
             }
 
-            MoneroComponents.TextPlain {
+            DinastycoinComponents.TextPlain {
                 id: content
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 6
@@ -2166,14 +2166,14 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         width: statusMessageText.contentWidth + 20
         anchors.horizontalCenter: parent.horizontalCenter
-        color: MoneroComponents.Style.blackTheme ? "black" : "white"
+        color: DinastycoinComponents.Style.blackTheme ? "black" : "white"
         height: 40
-        MoneroComponents.TextPlain {
+        DinastycoinComponents.TextPlain {
             id: statusMessageText
             anchors.fill: parent
             anchors.margins: 10
             font.pixelSize: 14
-            color: MoneroComponents.Style.defaultFontColor
+            color: DinastycoinComponents.Style.defaultFontColor
             themeTransition: false
         }
     }
@@ -2400,7 +2400,7 @@ ApplicationWindow {
         visible: blur.visible
         anchors.fill: parent
         anchors.topMargin: titleBar.height
-        color: MoneroComponents.Style.blackTheme ? "black" : "white"
+        color: DinastycoinComponents.Style.blackTheme ? "black" : "white"
         opacity: isOpenGL ? 0.3 : inputDialog.visible || splash.visible ? 0.7 : 1.0
 
         MoneroEffects.ColorTransition {
@@ -2417,77 +2417,77 @@ ApplicationWindow {
 
     // borders on white theme + linux
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !DinastycoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: DinastycoinComponents.Style.appWindowBorderColor
 
         MoneroEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: DinastycoinComponents.Style._b_appWindowBorderColor
+            whiteColor: DinastycoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !DinastycoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: DinastycoinComponents.Style.appWindowBorderColor
 
         MoneroEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: DinastycoinComponents.Style._b_appWindowBorderColor
+            whiteColor: DinastycoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !DinastycoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.left: parent.left
         height: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: DinastycoinComponents.Style.appWindowBorderColor
 
         MoneroEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: DinastycoinComponents.Style._b_appWindowBorderColor
+            whiteColor: DinastycoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !DinastycoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         height: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: DinastycoinComponents.Style.appWindowBorderColor
 
         MoneroEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: DinastycoinComponents.Style._b_appWindowBorderColor
+            whiteColor: DinastycoinComponents.Style._w_appWindowBorderColor
         }
     }
 
-    MoneroComponents.LanguageSidebar {
+    DinastycoinComponents.LanguageSidebar {
         id: languageSidebar
         dragMargin: 0
         onAboutToShow: previousActiveFocusItem = activeFocusItem;
         onClosed: { if (previousActiveFocusItem) previousActiveFocusItem.forceActiveFocus() }
     }
 
-    MoneroComponents.MenuBar { }
+    DinastycoinComponents.MenuBar { }
 
     Network {
         id: network
@@ -2499,4 +2499,3 @@ ApplicationWindow {
         proxyAddress: persistentSettings.getProxyAddress()
     }
 }
-

@@ -55,8 +55,8 @@ Item {
 
     height: small ?  30 : 36
     width: buttonLayout.width + 22
-   // implicitHeight: height
-   // implicitWidth: width
+    implicitHeight: height
+    implicitWidth: buttonLayout.implicitWidth + 22
 
     function doClick(){
         releaseFocus();
@@ -190,4 +190,3 @@ Item {
     Keys.onEnterPressed: Keys.onReturnPressed(event)
     Keys.onReturnPressed: doClick()
 }
-

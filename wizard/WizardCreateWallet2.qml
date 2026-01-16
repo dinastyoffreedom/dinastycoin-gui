@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
-import moneroComponents.Clipboard 1.0
+import dinastycoinComponents.Clipboard 1.0
 
 import "../js/Wizard.js" as Wizard
 import "../js/Utils.js" as Utils
@@ -447,4 +447,3 @@ Rectangle {
         }
     }
 }
-

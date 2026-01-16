@@ -31,10 +31,10 @@ import QtQuick 2.9
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import moneroComponents.Clipboard 1.0
-import moneroComponents.PendingTransaction 1.0
-import moneroComponents.Wallet 1.0
-import moneroComponents.NetworkType 1.0
+import dinastycoinComponents.Clipboard 1.0
+import dinastycoinComponents.PendingTransaction 1.0
+import dinastycoinComponents.Wallet 1.0
+import dinastycoinComponents.NetworkType 1.0
 import FontAwesome 1.0
 import "../components"
 import "../components" as MoneroComponents
@@ -1190,4 +1190,3 @@ Rectangle {
         fillPaymentDetails(address, paymentId, amount, description);
     }
 }
-

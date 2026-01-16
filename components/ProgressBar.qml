@@ -27,7 +27,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.9
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 
 import "../components" as MoneroComponents
 
@@ -134,4 +134,3 @@ Rectangle {
 
     }
 }
-

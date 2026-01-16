@@ -168,4 +168,3 @@ MoneroComponents.Dialog {
         }
     }
 }
-

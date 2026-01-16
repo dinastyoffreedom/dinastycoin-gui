@@ -125,4 +125,3 @@ GridLayout {
         text: initialHostPort[2]
     }
 }
-

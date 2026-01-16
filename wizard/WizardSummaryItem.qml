@@ -83,4 +83,3 @@ ColumnLayout {
         opacity: MoneroComponents.Style.dividerOpacity
     }
 }
-

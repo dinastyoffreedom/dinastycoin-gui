@@ -43,8 +43,8 @@
 #include "qt/MoneroSettings.h"
 
 /*!
-    \qmlmodule moneroSettings 1.0
-    \title Monero Settings QML Component
+    \qmlmodule dinastycoinSettings 1.0
+    \title Dinastycoin Settings QML Component
     \ingroup qmlmodules
     \brief Provides persistent platform-independent application settings.
 
@@ -57,12 +57,12 @@
 
     To use this module, import the module with the following line:
     \code
-    import moneroComponents.Settings 1.0
+    import dinastycoinComponents.Settings 1.0
     \endcode
 
     Usage:
     \code
-    MoneroSettings { id: persistentSettings, property bool foo: true }
+    DinastycoinSettings { id: persistentSettings, property bool foo: true }
     \endcode
 
     @TODO: Remove this QML component after migrating to Qt >= 5.12.0, as
@@ -70,7 +70,7 @@
 */
 
 
-void MoneroSettings::load()
+void DinastycoinSettings::load()
 {
     const QMetaObject *mo = this->metaObject();
     const int offset = mo->propertyOffset();
@@ -103,7 +103,7 @@ void MoneroSettings::load()
     }
 }
 
-void MoneroSettings::_q_propertyChanged()
+void DinastycoinSettings::_q_propertyChanged()
 {
     // Called on QML property change
     const QMetaObject *mo = this->metaObject();
@@ -123,7 +123,7 @@ void MoneroSettings::_q_propertyChanged()
     this->m_timerId = this->startTimer(settingsWriteDelay);
 }
 
-QVariant MoneroSettings::readProperty(const QMetaProperty &property) const
+QVariant DinastycoinSettings::readProperty(const QMetaProperty &property) const
 {
     QVariant var = property.read(this);
     if (var.userType() == qMetaTypeId<QJSValue>())
@@ -131,7 +131,7 @@ QVariant MoneroSettings::readProperty(const QMetaProperty &property) const
     return var;
 }
 
-void MoneroSettings::init()
+void DinastycoinSettings::init()
 {
     if (!this->m_initialized) {
         this->m_settings = portableConfigExists() ? portableSettings() : unportableSettings();
@@ -144,7 +144,7 @@ void MoneroSettings::init()
     }
 }
 
-void MoneroSettings::reset()
+void DinastycoinSettings::reset()
 {
     if (this->m_initialized && this->m_settings && !this->m_changedProperties.isEmpty())
         this->store();
@@ -152,7 +152,7 @@ void MoneroSettings::reset()
         this->m_settings.reset();
 }
 
-void MoneroSettings::store()
+void DinastycoinSettings::store()
 {
     if (!m_writable)
     {
@@ -174,34 +174,34 @@ void MoneroSettings::store()
     this->m_changedProperties.clear();
 }
 
-bool MoneroSettings::portable() const
+bool DinastycoinSettings::portable() const
 {
     return this->m_settings && this->m_settings->fileName() == portableFilePath();
 }
 
-bool MoneroSettings::portableConfigExists()
+bool DinastycoinSettings::portableConfigExists()
 {
     QFileInfo info(portableFilePath());
     return info.exists() && info.isFile();
 }
 
-QString MoneroSettings::portableFilePath()
+QString DinastycoinSettings::portableFilePath()
 {
     static QString filename(QDir(portableFolderName()).absoluteFilePath("settings.ini"));
     return filename;
 }
 
-QString MoneroSettings::portableFolderName()
+QString DinastycoinSettings::portableFolderName()
 {
-    return "monero-storage";
+    return "dinastycoin-storage";
 }
 
-std::unique_ptr<QSettings> MoneroSettings::portableSettings() const
+std::unique_ptr<QSettings> DinastycoinSettings::portableSettings() const
 {
     return std::unique_ptr<QSettings>(new QSettings(portableFilePath(), QSettings::IniFormat));
 }
 
-std::unique_ptr<QSettings> MoneroSettings::unportableSettings() const
+std::unique_ptr<QSettings> DinastycoinSettings::unportableSettings() const
 {
     if (this->m_fileName.isEmpty())
     {
@@ -210,7 +210,7 @@ std::unique_ptr<QSettings> MoneroSettings::unportableSettings() const
     return std::unique_ptr<QSettings>(new QSettings(this->m_fileName, QSettings::IniFormat));
 }
 
-void MoneroSettings::swap(std::unique_ptr<QSettings> newSettings)
+void DinastycoinSettings::swap(std::unique_ptr<QSettings> newSettings)
 {
     const QMetaObject *mo = this->metaObject();
     const int count = mo->propertyCount();
@@ -226,7 +226,7 @@ void MoneroSettings::swap(std::unique_ptr<QSettings> newSettings)
     emit portableChanged();
 }
 
-void MoneroSettings::setFileName(const QString &fileName)
+void DinastycoinSettings::setFileName(const QString &fileName)
 {
     if (fileName != this->m_fileName) {
         this->reset();
@@ -236,12 +236,12 @@ void MoneroSettings::setFileName(const QString &fileName)
     }
 }
 
-QString MoneroSettings::fileName() const
+QString DinastycoinSettings::fileName() const
 {
     return this->m_fileName;
 }
 
-bool MoneroSettings::setPortable(bool enabled)
+bool DinastycoinSettings::setPortable(bool enabled)
 {
     std::unique_ptr<QSettings> newSettings = enabled ? portableSettings() : unportableSettings();
     if (newSettings->status() != QSettings::NoError)
@@ -260,12 +260,12 @@ bool MoneroSettings::setPortable(bool enabled)
     return true;
 }
 
-void MoneroSettings::setWritable(bool enabled)
+void DinastycoinSettings::setWritable(bool enabled)
 {
     m_writable = enabled;
 }
 
-void MoneroSettings::timerEvent(QTimerEvent *event)
+void DinastycoinSettings::timerEvent(QTimerEvent *event)
 {
     if (event->timerId() == this->m_timerId) {
         killTimer(this->m_timerId);
@@ -275,17 +275,16 @@ void MoneroSettings::timerEvent(QTimerEvent *event)
     QObject::timerEvent(event);
 }
 
-void MoneroSettings::componentComplete()
+void DinastycoinSettings::componentComplete()
 {
     this->init();
 }
 
-void MoneroSettings::classBegin()
+void DinastycoinSettings::classBegin()
 {
 }
 
-MoneroSettings::MoneroSettings(QObject *parent) :
+DinastycoinSettings::DinastycoinSettings(QObject *parent) :
     QObject(parent)
 {
 }
-

@@ -35,4 +35,3 @@ QtObject {
 
     signal selected()
 }
-

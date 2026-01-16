@@ -36,7 +36,7 @@ import "../../js/Utils.js" as Utils
 import "../../components" as MoneroComponents
 import "../../pages"
 import "."
-import moneroComponents.Clipboard 1.0
+import dinastycoinComponents.Clipboard 1.0
 
 ColumnLayout {
     id: settingsPage
@@ -51,8 +51,8 @@ ColumnLayout {
     MoneroComponents.Navbar {
         id: navbarId
         Layout.alignment: Qt.AlignHCenter
-        Layout.topMargin: height
-        Layout.bottomMargin: height
+        Layout.topMargin:  20 //  height
+        Layout.bottomMargin: 20 // height
 
         MoneroComponents.NavbarItem {
             active: settingsStateView.state == "Wallet"
@@ -175,4 +175,3 @@ ColumnLayout {
         console.log("Settings page loaded");
     }
 }
-

@@ -34,7 +34,7 @@ import QtGraphicalEffects 1.0
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.2
 import QtQuick.Dialogs 1.2
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 
 import "../js/Wizard.js" as Wizard
 import "../js/Windows.js" as Windows
@@ -564,4 +564,3 @@ Rectangle {
         //
     }
 }
-

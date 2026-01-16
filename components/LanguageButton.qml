@@ -65,4 +65,3 @@ Item {
         onClicked: appWindow.toggleLanguageView()
     }
 }
-

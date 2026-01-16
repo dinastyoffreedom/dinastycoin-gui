@@ -84,4 +84,3 @@ TextArea {
         onSelectAll: textArea.selectAll();
     }
 }
-

@@ -52,7 +52,8 @@ Rectangle {
         property string borderColor: MoneroComponents.Style.blackTheme ? "#808080" : "#B9B9B9"
         property int textMargin: {
             // left-right margins for a given cell
-            if(appWindow.width < 890){
+            // Using grid.width instead of appWindow.width to break potential binding loop
+            if(grid.width < 890){ // Changed appWindow.width to grid.width
                 return 32;
             } else {
                 return 64;
@@ -215,4 +216,3 @@ Rectangle {
         }
     }
 }
-

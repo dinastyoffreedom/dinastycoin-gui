@@ -31,7 +31,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.0
 import QtQuick.Dialogs 1.2
 
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 
 import "../../js/Utils.js" as Utils
 import "../../js/Windows.js" as Windows
@@ -344,5 +344,4 @@ Rectangle {
         console.log('SettingsLayout loaded');
     }
 }
-
 

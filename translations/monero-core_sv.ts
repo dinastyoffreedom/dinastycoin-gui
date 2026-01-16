@@ -69,8 +69,8 @@
     </message>
     <message>
         <location filename="../pages/AddressBook.qml" line="93"/>
-        <source>This makes it easier to send or receive Monero and reduces errors when typing in addresses manually.</source>
-        <translation>Detta gör det enklare att skicka/ta emot Monero och minskar fel vid manuellt skrivande av adresser</translation>
+        <source>This makes it easier to send or receive Dinastycoin and reduces errors when typing in addresses manually.</source>
+        <translation>Detta gör det enklare att skicka/ta emot Dinastycoin och minskar fel vid manuellt skrivande av adresser</translation>
     </message>
     <message>
         <location filename="../pages/AddressBook.qml" line="102"/>
@@ -633,13 +633,13 @@ It is recommended to enter passphrase on the hardware wallet for better security
     </message>
     <message>
         <location filename="../pages/Keys.qml" line="62"/>
-        <source>WARNING: Do not reuse your Monero keys on another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy.</source>
-        <translation>VARNING: Återanvänd inte din Monero-nyckel på en annan förgrening, SÅVIDA INTE denna förgrening har inbyggda begränsningar för återanvändning. Görs detta så kan din integritet skadas.</translation>
+        <source>WARNING: Do not reuse your Dinastycoin keys on another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy.</source>
+        <translation>VARNING: Återanvänd inte din Dinastycoin-nyckel på en annan förgrening, SÅVIDA INTE denna förgrening har inbyggda begränsningar för återanvändning. Görs detta så kan din integritet skadas.</translation>
     </message>
     <message>
         <location filename="../pages/Keys.qml" line="85"/>
-        <source>WARNING: Copying your seed to clipboard can expose you to malicious software, which may record your seed and steal your Monero. Please write down your seed manually.</source>
-        <translation>VARNING: Om du kopierar ditt minnesfrö till urklipp så riskerar du att exponeras för skadlig programvara, som kan registrera ditt minnesfrö och stjäla dina Monero. Vänligen nedteckna ditt minnesfrö manuellt.</translation>
+        <source>WARNING: Copying your seed to clipboard can expose you to malicious software, which may record your seed and steal your Dinastycoin. Please write down your seed manually.</source>
+        <translation>VARNING: Om du kopierar ditt minnesfrö till urklipp så riskerar du att exponeras för skadlig programvara, som kan registrera ditt minnesfrö och stjäla dina Dinastycoin. Vänligen nedteckna ditt minnesfrö manuellt.</translation>
     </message>
     <message>
         <location filename="../pages/Keys.qml" line="106"/>
@@ -1064,9 +1064,9 @@ It is recommended to enter passphrase on the hardware wallet for better security
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="76"/>
-        <source>Mining with your computer helps strengthen the Monero network. The more people mine, the harder it is for the network to be attacked, and every little bit helps.
+        <source>Mining with your computer helps strengthen the Dinastycoin network. The more people mine, the harder it is for the network to be attacked, and every little bit helps.
 
-Mining also gives you a small chance to earn some Monero. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!</source>
+Mining also gives you a small chance to earn some Dinastycoin. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1717,8 +1717,8 @@ Mining also gives you a small chance to earn some Monero. Your computer will cre
     </message>
     <message>
         <location filename="../pages/settings/SettingsInfo.qml" line="102"/>
-        <source>Embedded Monero version: </source>
-        <translation>Inbäddad Monero-version: </translation>
+        <source>Embedded Dinastycoin version: </source>
+        <translation>Inbäddad Dinastycoin-version: </translation>
     </message>
     <message>
         <location filename="../pages/settings/SettingsInfo.qml" line="132"/>
@@ -1827,12 +1827,12 @@ Den gamla plånbokens cache-fil kommer att ändra namn och kan återställas sen
     </message>
     <message>
         <location filename="../pages/settings/SettingsInfo.qml" line="410"/>
-        <source>Donate to Monero</source>
+        <source>Donate to Dinastycoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pages/settings/SettingsInfo.qml" line="412"/>
-        <source>Donation to Monero Core Team</source>
+        <source>Donation to Dinastycoin Core Team</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2011,13 +2011,13 @@ Den gamla plånbokens cache-fil kommer att ändra namn och kan återställas sen
     </message>
     <message>
         <location filename="../pages/settings/SettingsNode.qml" line="224"/>
-        <source>Uses a third-party server to connect to the Monero network. Less secure, but easier on your computer.</source>
-        <translation>Använder en tredje-part server som ansluter till Monero-nätverket. Mindre säkert, men mindre krävande för din dator.</translation>
+        <source>Uses a third-party server to connect to the Dinastycoin network. Less secure, but easier on your computer.</source>
+        <translation>Använder en tredje-part server som ansluter till Dinastycoin-nätverket. Mindre säkert, men mindre krävande för din dator.</translation>
     </message>
     <message>
         <location filename="../pages/settings/SettingsNode.qml" line="253"/>
-        <source>To find a remote node, type &apos;Monero remote node&apos; into your favorite search engine. Please ensure the node is run by a trusted third-party.</source>
-        <translation>För att hitta en fjärrnod, skriv &apos;Monero remote node&apos; i din favoritsökmotor. Vänligen försäkra dig om att Noden drivs av en betrodd tredje-part.</translation>
+        <source>To find a remote node, type &apos;Dinastycoin remote node&apos; into your favorite search engine. Please ensure the node is run by a trusted third-party.</source>
+        <translation>För att hitta en fjärrnod, skriv &apos;Dinastycoin remote node&apos; i din favoritsökmotor. Vänligen försäkra dig om att Noden drivs av en betrodd tredje-part.</translation>
     </message>
     <message>
         <location filename="../pages/settings/SettingsNode.qml" line="317"/>
@@ -2199,7 +2199,7 @@ You can change the password in the wallet settings.</source>
     </message>
     <message>
         <location filename="../pages/settings/SettingsWallet.qml" line="177"/>
-        <source>Receive Monero for your business, easily.</source>
+        <source>Receive Dinastycoin for your business, easily.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2227,8 +2227,8 @@ You can change the password in the wallet settings.</source>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="103"/>
-        <source>This page allows you to interact with the shared ring database. This database is meant for use by Monero wallets as well as wallets from Monero clones which reuse the Monero keys.</source>
-        <translation>Denna sida låter dig interagera med den delade ringdatabasen. Denna databas är avsedd att användas av både Monero-plånböcker, och plånböcker för Monero-kloner som återanvänder Moneros nycklar.</translation>
+        <source>This page allows you to interact with the shared ring database. This database is meant for use by Dinastycoin wallets as well as wallets from Dinastycoin clones which reuse the Dinastycoin keys.</source>
+        <translation>Denna sida låter dig interagera med den delade ringdatabasen. Denna databas är avsedd att användas av både Dinastycoin-plånböcker, och plånböcker för Dinastycoin-kloner som återanvänder Dinastycoins nycklar.</translation>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="115"/>
@@ -2237,8 +2237,8 @@ You can change the password in the wallet settings.</source>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="116"/>
-        <source>In order to obscure which inputs in a Monero transaction are being spent, a third party should not be able to tell which inputs in a ring are already known to be spent. Being able to do so would weaken the protection afforded by ring signatures. If all but one of the inputs are known to be already spent, then the input being actually spent becomes apparent, thereby nullifying the effect of ring signatures, one of the three main layers of privacy protection Monero uses.&lt;br&gt;To help transactions avoid those inputs, a list of known spent ones can be used to avoid using them in new transactions. Such a list is maintained by the Monero project and is available on the getmonero.org website, and you can import this list here.&lt;br&gt;Alternatively, you can scan the blockchain (and the blockchain of key-reusing Monero clones) yourself using the monero-blockchain-mark-spent-outputs tool to create a list of known spent outputs.&lt;br&gt;</source>
-        <translation>För att dölja vilja ingångar som spenderas i en viss Monero-transaktion får en tredje part inte kunna avgöra vilka ingångar i en ring som med säkerhet redan har spenderats. Om det var möjligt skulle skyddet som ges av ringsignaturer försvagas. Om alla utom en av ingångarna med säkerhet redan har spenderats så blir det uppenbart vilken ingång som faktiskt spenderas. Då upphävs effekten av ringsignaturer, vilket är ett av de tre huvudsakliga lager av sekretesskydd som Monero använder.&lt;br&gt;För att hjälpa transaktioner att undvika dessa ingångar kan en lista över med säkerhet spenderade utgångar användas för att undvika att dessa används i nya transaktioner. Monero-projektet upprätthåller en sådan lista och den finns tillgänglig på webbplatsen getmonero.org. Du kan importera listan här.&lt;br&gt;Alternativt kan du själv skanna blockkedjan (och blockkedjan för Monero-kloner som återanvänder nycklar) genom att använda verktyget monero-blockchain-mark-spent-outputs för att skapa en lista över med säkerhet spenderade utgångar.&lt;br&gt;</translation>
+        <source>In order to obscure which inputs in a Dinastycoin transaction are being spent, a third party should not be able to tell which inputs in a ring are already known to be spent. Being able to do so would weaken the protection afforded by ring signatures. If all but one of the inputs are known to be already spent, then the input being actually spent becomes apparent, thereby nullifying the effect of ring signatures, one of the three main layers of privacy protection Dinastycoin uses.&lt;br&gt;To help transactions avoid those inputs, a list of known spent ones can be used to avoid using them in new transactions. Such a list is maintained by the Dinastycoin project and is available on the getDinastycoin.org website, and you can import this list here.&lt;br&gt;Alternatively, you can scan the blockchain (and the blockchain of key-reusing Dinastycoin clones) yourself using the Dinastycoin-blockchain-mark-spent-outputs tool to create a list of known spent outputs.&lt;br&gt;</source>
+        <translation>För att dölja vilja ingångar som spenderas i en viss Dinastycoin-transaktion får en tredje part inte kunna avgöra vilka ingångar i en ring som med säkerhet redan har spenderats. Om det var möjligt skulle skyddet som ges av ringsignaturer försvagas. Om alla utom en av ingångarna med säkerhet redan har spenderats så blir det uppenbart vilken ingång som faktiskt spenderas. Då upphävs effekten av ringsignaturer, vilket är ett av de tre huvudsakliga lager av sekretesskydd som Dinastycoin använder.&lt;br&gt;För att hjälpa transaktioner att undvika dessa ingångar kan en lista över med säkerhet spenderade utgångar användas för att undvika att dessa används i nya transaktioner. Dinastycoin-projektet upprätthåller en sådan lista och den finns tillgänglig på webbplatsen getDinastycoin.org. Du kan importera listan här.&lt;br&gt;Alternativt kan du själv skanna blockkedjan (och blockkedjan för Dinastycoin-kloner som återanvänder nycklar) genom att använda verktyget Dinastycoin-blockchain-mark-spent-outputs för att skapa en lista över med säkerhet spenderade utgångar.&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="134"/>
@@ -2307,13 +2307,13 @@ You can change the password in the wallet settings.</source>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="247"/>
-        <source>In order to avoid nullifying the protection afforded by Monero&apos;s ring signatures, an output should not be spent with different rings on different blockchains. While this is normally not a concern, it can become one when a key-reusing Monero clone allows you to spend existing outputs. In this case, you need to ensure this existing outputs uses the same ring on both chains.&lt;br&gt;This will be done automatically by Monero and any key-reusing software which is not trying to actively strip you of your privacy.&lt;br&gt;If you are using a key-reusing Monero clone too, and this clone does not include this protection, you can still ensure your transactions are protected by spending on the clone first, then manually adding the ring on this page, which allows you to then spend your Monero safely.&lt;br&gt;If you do not use a key-reusing Monero clone without these safety features, then you do not need to do anything as it is all automated.&lt;br&gt;</source>
-        <translation>För att undvika att skyddet som erbjuds av Moneros ringsignaturerer upphävs, bör inte en utgång spenderas med olika ringar på olika blockkedjor. Detta är normalt inte ett problem, men det kan bli ett problem om en nyckelåteranvändnings Monero-klon tillåter dig att spendera existerande utgångar. Om detta är fallet, måste du säkerställa att dessa existerande utgångar använder samma ringar på båda kedjorna.&lt;br&gt;Detta kommer att göras automatiskt av Monero och något nyckelåteranvändningsprogram som inte aktivt försöker ta bort din integritet.&lt;br&gt;Om du använder en nyckelåteranvändnings Monero-klon, och denna klonen inte inkluderar något skydd, så kan du fortfarande säkerställa att dina transaktioner är skyddade från att spenderas på klonen först, sedan att du manuellt lägger till ringen på denna sidan, som tillåter dig att spendera dina Monero säkert.&lt;br&gt;Om du inte använder en nyckelåteranvändnings Monero klon utan dessa säkerhetsalternativ, så behöver du inte göra någonting då allt görs automatiskt.&lt;br&gt;</translation>
+        <source>In order to avoid nullifying the protection afforded by Dinastycoin&apos;s ring signatures, an output should not be spent with different rings on different blockchains. While this is normally not a concern, it can become one when a key-reusing Dinastycoin clone allows you to spend existing outputs. In this case, you need to ensure this existing outputs uses the same ring on both chains.&lt;br&gt;This will be done automatically by Dinastycoin and any key-reusing software which is not trying to actively strip you of your privacy.&lt;br&gt;If you are using a key-reusing Dinastycoin clone too, and this clone does not include this protection, you can still ensure your transactions are protected by spending on the clone first, then manually adding the ring on this page, which allows you to then spend your Dinastycoin safely.&lt;br&gt;If you do not use a key-reusing Dinastycoin clone without these safety features, then you do not need to do anything as it is all automated.&lt;br&gt;</source>
+        <translation>För att undvika att skyddet som erbjuds av Dinastycoins ringsignaturerer upphävs, bör inte en utgång spenderas med olika ringar på olika blockkedjor. Detta är normalt inte ett problem, men det kan bli ett problem om en nyckelåteranvändnings Dinastycoin-klon tillåter dig att spendera existerande utgångar. Om detta är fallet, måste du säkerställa att dessa existerande utgångar använder samma ringar på båda kedjorna.&lt;br&gt;Detta kommer att göras automatiskt av Dinastycoin och något nyckelåteranvändningsprogram som inte aktivt försöker ta bort din integritet.&lt;br&gt;Om du använder en nyckelåteranvändnings Dinastycoin-klon, och denna klonen inte inkluderar något skydd, så kan du fortfarande säkerställa att dina transaktioner är skyddade från att spenderas på klonen först, sedan att du manuellt lägger till ringen på denna sidan, som tillåter dig att spendera dina Dinastycoin säkert.&lt;br&gt;Om du inte använder en nyckelåteranvändnings Dinastycoin klon utan dessa säkerhetsalternativ, så behöver du inte göra någonting då allt görs automatiskt.&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="266"/>
-        <source>This records rings used by outputs spent on Monero on a key reusing chain, so that the same ring may be reused to avoid privacy issues.</source>
-        <translation>Detta registrerar ringar som använts av utgångar som spenderats på Monero på en kedja som återanvänder nycklar, så att samma ring kan återanvändas för att undvika sekretessproblem.</translation>
+        <source>This records rings used by outputs spent on Dinastycoin on a key reusing chain, so that the same ring may be reused to avoid privacy issues.</source>
+        <translation>Detta registrerar ringar som använts av utgångar som spenderats på Dinastycoin på en kedja som återanvänder nycklar, så att samma ring kan återanvändas för att undvika sekretessproblem.</translation>
     </message>
     <message>
         <location filename="../pages/SharedRingDB.qml" line="277"/>
@@ -2497,8 +2497,8 @@ You can change the password in the wallet settings.</source>
     </message>
     <message>
         <location filename="../pages/Sign.qml" line="341"/>
-        <source>Enter the Monero Address (example: 44AFFq5kSiGBoZ...)</source>
-        <translation>Ange Monero Adress (exempelvis: 44AFFq5kSiGBoZ...)</translation>
+        <source>Enter the Dinastycoin Address (example: 44AFFq5kSiGBoZ...)</source>
+        <translation>Ange Dinastycoin Adress (exempelvis: 44AFFq5kSiGBoZ...)</translation>
     </message>
     <message>
         <location filename="../pages/Sign.qml" line="351"/>
@@ -3000,8 +3000,8 @@ Confirmation message:
     </message>
     <message>
         <location filename="../pages/Transfer.qml" line="1071"/>
-        <source>Monero sent successfully</source>
-        <translation>Monero skickades</translation>
+        <source>Dinastycoin sent successfully</source>
+        <translation>Dinastycoin skickades</translation>
     </message>
     <message>
         <location filename="../pages/Transfer.qml" line="1090"/>
@@ -3105,7 +3105,7 @@ Uppgradera eller anslut till en annan daemon</translation>
     </message>
     <message>
         <location filename="../components/TxConfirmationDialog.qml" line="311"/>
-        <source>Monero address</source>
+        <source>Dinastycoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3258,12 +3258,12 @@ I fallet med spenderbevis behöver du inte ange mottagaradressen.</translation>
     <name>UpdateDialog</name>
     <message>
         <location filename="../components/UpdateDialog.qml" line="77"/>
-        <source>New Monero version v%1 is available.</source>
+        <source>New Dinastycoin version v%1 is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../components/UpdateDialog.qml" line="98"/>
-        <source>Please visit getmonero.org for details</source>
+        <source>Please visit getDinastycoin.org for details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3637,8 +3637,8 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardCreateWallet3.qml" line="60"/>
-        <source>To be able to communicate with the Monero network your wallet needs to be connected to a Monero node. For best privacy it&apos;s recommended to run your own node.</source>
-        <translation>För att kunna kommunicera med Moneros nätverk måste din plånbok vara uppkopplad till en Monero nod. För bästa integritet rekommenderas det att du kör din egen nod.</translation>
+        <source>To be able to communicate with the Dinastycoin network your wallet needs to be connected to a Dinastycoin node. For best privacy it&apos;s recommended to run your own node.</source>
+        <translation>För att kunna kommunicera med Dinastycoins nätverk måste din plånbok vara uppkopplad till en Dinastycoin nod. För bästa integritet rekommenderas det att du kör din egen nod.</translation>
     </message>
 </context>
 <context>
@@ -3698,8 +3698,8 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardDaemonSettings.qml" line="152"/>
-        <source>Additionally, you may specify a bootstrap node to use Monero immediately.</source>
-        <translation>Därutöver kan du ange en nod för bootstrap för att använda Monero omedelbart.</translation>
+        <source>Additionally, you may specify a bootstrap node to use Dinastycoin immediately.</source>
+        <translation>Därutöver kan du ange en nod för bootstrap för att använda Dinastycoin omedelbart.</translation>
     </message>
     <message>
         <location filename="../wizard/WizardDaemonSettings.qml" line="192"/>
@@ -3711,7 +3711,7 @@ your input may be required.</source>
     <name>WizardHome</name>
     <message>
         <location filename="../wizard/WizardHome.qml" line="66"/>
-        <source>Welcome to Monero</source>
+        <source>Welcome to Dinastycoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3733,8 +3733,8 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardHome.qml" line="82"/>
-        <source>Choose this option if this is your first time using Monero.</source>
-        <translation>Välj detta alternativ om du använder Monero för första gången.</translation>
+        <source>Choose this option if this is your first time using Dinastycoin.</source>
+        <translation>Välj detta alternativ om du använder Dinastycoin för första gången.</translation>
     </message>
     <message>
         <location filename="../wizard/WizardHome.qml" line="104"/>
@@ -3743,7 +3743,7 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardHome.qml" line="108"/>
-        <source>Connect your hardware wallet to create a new Monero wallet.</source>
+        <source>Connect your hardware wallet to create a new Dinastycoin wallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3809,7 +3809,7 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardModeBootstrap.qml" line="84"/>
-        <source>Temporary use of remote nodes is useful in order to use Monero immediately (hence the name bootstrap), however be aware that when using remote nodes (including with the bootstrap setting), nodes could track your IP address, track your &quot;restore height&quot; and associated block request data, and send you inaccurate information to learn more about transactions you make.</source>
+        <source>Temporary use of remote nodes is useful in order to use Dinastycoin immediately (hence the name bootstrap), however be aware that when using remote nodes (including with the bootstrap setting), nodes could track your IP address, track your &quot;restore height&quot; and associated block request data, and send you inaccurate information to learn more about transactions you make.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3832,8 +3832,8 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardModeRemoteNodeWarning.qml" line="72"/>
-        <source>This mode is ideal for managing small amounts of Monero. You have access to basic features for making and managing transactions. It will automatically connect to the Monero network so you can start using Monero immediately.</source>
-        <translation>Detta läge är idealt för att hantera mindre summor Monero. Du får åtkomst till enklare funktioner för att skapa och hantera transaktioner. Det kommer automatiskt ansluta till Moneros nätverk så du kan börja använda Monero direkt.</translation>
+        <source>This mode is ideal for managing small amounts of Dinastycoin. You have access to basic features for making and managing transactions. It will automatically connect to the Dinastycoin network so you can start using Dinastycoin immediately.</source>
+        <translation>Detta läge är idealt för att hantera mindre summor Dinastycoin. Du får åtkomst till enklare funktioner för att skapa och hantera transaktioner. Det kommer automatiskt ansluta till Dinastycoins nätverk så du kan börja använda Dinastycoin direkt.</translation>
     </message>
     <message>
         <location filename="../wizard/WizardModeRemoteNodeWarning.qml" line="85"/>
@@ -3923,7 +3923,7 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardModeSelection.qml" line="166"/>
-        <source>Create portable wallets and use them on any PC. Enable if you installed Monero on a USB stick, an external drive, or any other portable storage medium.</source>
+        <source>Create portable wallets and use them on any PC. Enable if you installed Dinastycoin on a USB stick, an external drive, or any other portable storage medium.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4095,7 +4095,7 @@ your input may be required.</source>
     </message>
     <message>
         <location filename="../wizard/WizardRestoreWallet3.qml" line="63"/>
-        <source>To be able to communicate with the Monero network your wallet needs to be connected to a Monero node. For best privacy it&apos;s recommended to run your own node.
+        <source>To be able to communicate with the Dinastycoin network your wallet needs to be connected to a Dinastycoin node. For best privacy it&apos;s recommended to run your own node.
 
 If you don&apos;t have the option to run your own node, there&apos;s an option to connect to a remote node.</source>
         <translation type="unfinished"></translation>
@@ -4334,8 +4334,8 @@ If you don&apos;t have the option to run your own node, there&apos;s an option t
     </message>
     <message>
         <location filename="../main.qml" line="1055"/>
-        <source>This address received %1 monero, with %2 confirmation(s).</source>
-        <translation>Denna adress tog emot %1 Monero, med %2 bekräftelser.</translation>
+        <source>This address received %1 Dinastycoin, with %2 confirmation(s).</source>
+        <translation>Denna adress tog emot %1 Dinastycoin, med %2 bekräftelser.</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1066"/>
@@ -4359,7 +4359,7 @@ If you don&apos;t have the option to run your own node, there&apos;s an option t
     </message>
     <message>
         <location filename="../main.qml" line="1345"/>
-        <source>Would you like to register Monero GUI Desktop entry?</source>
+        <source>Would you like to register Dinastycoin GUI Desktop entry?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4491,8 +4491,8 @@ If you don&apos;t have the option to run your own node, there&apos;s an option t
     </message>
     <message>
         <location filename="../main.qml" line="1052"/>
-        <source>This address received %1 monero, but the transaction is not yet mined</source>
-        <translation>Denna adress tog emot %1 Monero, men transaktionen har ännu inte bekräftats</translation>
+        <source>This address received %1 Dinastycoin, but the transaction is not yet mined</source>
+        <translation>Denna adress tog emot %1 Dinastycoin, men transaktionen har ännu inte bekräftats</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1059"/>

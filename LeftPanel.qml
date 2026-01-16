@@ -29,9 +29,9 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
-import moneroComponents.Wallet 1.0
-import moneroComponents.NetworkType 1.0
-import moneroComponents.Clipboard 1.0
+import dinastycoinComponents.Wallet 1.0
+import dinastycoinComponents.NetworkType 1.0
+import dinastycoinComponents.Clipboard 1.0
 import FontAwesome 1.0
 
 import "components" as MoneroComponents
@@ -554,4 +554,3 @@ Rectangle {
         }
     }
 }
-

@@ -44,4 +44,3 @@ Text {
         anchors.left: tooltipIconVisible ? parent.right : parent.left
     }
 }
-

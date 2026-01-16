@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
-import moneroComponents.NetworkType 1.0
+import dinastycoinComponents.NetworkType 1.0
 
 import "../js/Wizard.js" as Wizard
 import "../js/Utils.js" as Utils
@@ -85,4 +85,3 @@ ColumnLayout {
         value: Utils.netTypeToString()
     }
 }
-

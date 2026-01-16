@@ -47,8 +47,8 @@ ColumnLayout {
     MoneroComponents.Navbar {
         id: navbarId
         Layout.alignment: Qt.AlignHCenter
-        Layout.topMargin: height
-        Layout.bottomMargin: height
+        Layout.topMargin: 20 //  height
+        Layout.bottomMargin: 20 // height
 
         MoneroComponents.NavbarItem {
             active: state == "Mining"
@@ -156,4 +156,3 @@ ColumnLayout {
     }
     
 }
-

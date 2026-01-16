@@ -272,4 +272,3 @@ Rectangle {
             daemonManager.daemonConsoleUpdated.connect(onDaemonConsoleUpdated)
     }
 }
-

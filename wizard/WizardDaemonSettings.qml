@@ -204,4 +204,3 @@ ColumnLayout {
         visible: remoteNode.checked
     }
 }
-

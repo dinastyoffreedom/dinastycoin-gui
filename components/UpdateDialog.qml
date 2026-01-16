@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
-import moneroComponents.Downloader 1.0
+import dinastycoinComponents.Downloader 1.0
 
 import "../components" as MoneroComponents
 
@@ -202,4 +202,3 @@ Popup {
         proxyAddress: persistentSettings.getProxyAddress()
     }
 }
-

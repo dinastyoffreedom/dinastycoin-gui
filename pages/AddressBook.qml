@@ -35,10 +35,10 @@ import "../components" as MoneroComponents
 import "../components/effects/" as MoneroEffects
 
 import "../js/TxUtils.js" as TxUtils
-import moneroComponents.AddressBook 1.0
-import moneroComponents.AddressBookModel 1.0
-import moneroComponents.Clipboard 1.0
-import moneroComponents.NetworkType 1.0
+import dinastycoinComponents.AddressBook 1.0
+import dinastycoinComponents.AddressBookModel 1.0
+import dinastycoinComponents.Clipboard 1.0
+import dinastycoinComponents.NetworkType 1.0
 import FontAwesome 1.0
 
 Rectangle {
@@ -555,4 +555,3 @@ Rectangle {
         clearFields();
     }
 }
-

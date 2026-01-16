@@ -31,9 +31,9 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "../components" as MoneroComponents
-import moneroComponents.Wallet 1.0
-import moneroComponents.P2PoolManager 1.0
-import moneroComponents.DaemonManager 1.0
+import dinastycoinComponents.Wallet 1.0
+import dinastycoinComponents.P2PoolManager 1.0
+import dinastycoinComponents.DaemonManager 1.0
 
 Rectangle {
     id: root
@@ -702,4 +702,3 @@ allArgs = allArgs.filter( ( el ) => !defaultArgs.includes( el.split(" ")[0] ) )
         p2poolManager.p2poolDownloadSuccess.connect(p2poolDownloadSucceeded);
     }
 }
-

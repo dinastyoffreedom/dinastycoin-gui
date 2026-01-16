@@ -125,4 +125,3 @@ Item {
     Keys.onEnterPressed: Keys.onReturnPressed(event)
     Keys.onReturnPressed: doClick()
 }
-

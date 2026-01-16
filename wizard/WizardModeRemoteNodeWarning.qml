@@ -145,4 +145,3 @@ Rectangle {
         understoodCheckbox.checked = false;
     }
 }
-

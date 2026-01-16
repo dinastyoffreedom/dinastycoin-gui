@@ -31,7 +31,7 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
 
-import moneroComponents.Wallet 1.0
+import dinastycoinComponents.Wallet 1.0
 import "../js/Wizard.js" as Wizard
 import "../js/Utils.js" as Utils
 import "../components"
@@ -307,4 +307,3 @@ Rectangle {
         wizardController.walletCreatedFromDevice.disconnect(onCreateWalletFromDeviceCompleted);
     }
 }
-

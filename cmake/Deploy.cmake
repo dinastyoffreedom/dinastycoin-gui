@@ -156,6 +156,8 @@ if(APPLE OR (WIN32 AND NOT STATIC))
             libutf8_validity.dll
             libunbound-8.dll
             libmd4c.dll
+            libreadline8.dll
+            libtermcap-0.dll
         )
 
         # Boost Regex is header-only since 1.77

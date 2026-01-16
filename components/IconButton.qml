@@ -65,4 +65,3 @@ MoneroEffects.ImageMask {
         onClicked: button.clicked(mouse)
     }
 }
-

@@ -8,7 +8,7 @@ AppName=dinastycoin GUI Wallet
 ; For InnoSetup this is the property that uniquely identifies the application as such
 ; Thus it's important to keep this stable over releases
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
-
+AppVerName=dinastycoin GUI Wallet Beta 1
 AppVersion={#GuiVersion}
 VersionInfoVersion={#GuiVersion}
 DefaultDirName={commonpf}\dinastycoin GUI Wallet
@@ -110,7 +110,7 @@ Source: "bin\start-low-graphics-mode.bat"; DestDir: "{app}"; Flags: ignoreversio
 
 ; Mesa, open-source OpenGL implementation; part of "low-level graphics" support
 Source: "bin\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
-
+Source: "bin\*.dll" ; DestDir: "{app}"; Flags: ignoreversion
 
 ; Delete any files and directories that were installed by previous installer versions but are not
 ; needed anymore, thanks to the static linking of the GUI wallet exe - all those things are now

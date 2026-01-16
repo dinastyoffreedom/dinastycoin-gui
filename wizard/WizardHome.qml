@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
-import moneroComponents.NetworkType 1.0
+import dinastycoinComponents.NetworkType 1.0
 
 import "../components" as MoneroComponents
 
@@ -63,7 +63,7 @@ Rectangle {
                 WizardHeader {
                     Layout.bottomMargin: 7
                     Layout.fillWidth: true
-                    title: qsTr("Welcome to Monero") + translationManager.emptyString
+                    title: qsTr("Welcome to Dinastycoin") + translationManager.emptyString
                     subtitle: ""
                 }
 
@@ -259,4 +259,3 @@ Rectangle {
         }
     }
 }
-

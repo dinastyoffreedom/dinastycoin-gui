@@ -78,7 +78,7 @@ const QString getLogPath(const QString &userDefinedLogFilePath, bool portable)
 
     if (portable)
     {
-        return QDir(MoneroSettings::portableFolderName()).filePath(defaultLogName);
+        return QDir(DinastycoinSettings::portableFolderName()).filePath(defaultLogName);
     }
 
     if(TailsOS::detect() && TailsOS::usePersistence)
@@ -133,4 +133,3 @@ QString Logger::logFilePath() const
 {
     return m_logFilePath;
 }
-
