@@ -186,8 +186,8 @@
         <file>pages/settings/SettingsLayout.qml</file>
         <file>pages/settings/SettingsInfo.qml</file>
         <file>components/WarningBox.qml</file>
-        <file>images/miningDCY.png</file>
-        <file>images/miningDCY@2x.png</file>
+        <file>images/miningdcy.png</file>
+        <file>images/miningdcy@2x.png</file>
         <file>pages/merchant/Merchant.qml</file>
         <file>pages/merchant/MerchantCheckbox.qml</file>
         <file>pages/merchant/MerchantTrackingList.qml</file>

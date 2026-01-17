@@ -1008,7 +1008,7 @@ Rectangle {
                                     anchors.leftMargin: 16
                                     width: 28
                                     height: 28
-                                    source: "qrc:///images/miningDCY.png"
+                                    source: "qrc:///images/miningdcy.png"
                                 }
 
                                 MoneroComponents.StandardButton {

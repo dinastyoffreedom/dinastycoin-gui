@@ -45,4 +45,6 @@ tags
 /dist/
 **/.DS_Store
 *.bat
-
+# File temporanei Windows
+*.lnk
+*Zone.Identifier

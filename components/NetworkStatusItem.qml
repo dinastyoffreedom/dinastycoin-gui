@@ -93,7 +93,7 @@ Rectangle {
                 anchors.rightMargin: !appWindow.isMining ? 11 : 0
                 source: {
                     if(appWindow.isMining) {
-                       return "qrc:///images/miningDCY.png"
+                       return "qrc:///images/miningdcy.png"
                     } else if(item.connected == Wallet.ConnectionStatus_Connected || !MoneroComponents.Style.blackTheme) {
                         return "qrc:///images/lightning.png"
                     } else {
