@@ -1,25 +1,26 @@
-# Updated Dockerfile with OpenGL dependencies
+# Updated Dockerfile with additional OpenGL libraries and environment variables
 
-FROM some_base_image
+FROM some/base_image
 
-# Update the first RUN command to include missing dependencies
+# Existing APT commands
 RUN apt-get update && apt-get install -y \
-    libglu1-mesa-dev \
-    libglu1-mesa \
-    libxrandr-dev \
-    libxinerama-dev \
-    libxcursor-dev \
-    libxi-dev \
-    libxext-dev \
-    libxrender-dev \
-    && rm -rf /var/lib/apt/lists/*
+  ... \
+  libglu1-mesa-dev \
+  libglu1-mesa \
+  libxrandr-dev \
+  libxinerama-dev \
+  libxcursor-dev \
+  libxi-dev \
+  libxext-dev \
+  libxrender-dev \
+  ...
 
-# Set environment variables for OpenGL
-ENV OPENGL_LIB=/usr/lib/x86_64-linux-gnu
-ENV OPENGL_INCLUDE=/usr/include
+# Set OpenGL environment variables
+ENV OPENGL_gl_LIBRARY=/usr/lib/x86_64-linux-gnu/libGL.so.1 \
+    OPENGL_glu_LIBRARY=/usr/lib/x86_64-linux-gnu/libGLU.so.1 \
+    OPENGL_INCLUDE_DIR=/usr/include \
+    OpenGL_GL_PREFERENCE=GLVND \
+    PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig
 
-# Other commands
-# ...
-
-# Build command
+# Compilation step
 RUN make release-static
