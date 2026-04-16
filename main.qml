@@ -758,8 +758,12 @@ ApplicationWindow {
             leftPanel.progressBar.updateProgress(0,dTargetBlock, dTargetBlock, qsTr("Waiting for daemon to sync"));
         } else {
             leftPanel.daemonProgressBar.updateProgress(dCurrentBlock,dTargetBlock, 0, qsTr("Daemon is synchronized (%1)").arg(dCurrentBlock.toFixed(0)));
-            if(walletSynced)
+            if(walletSynced) {
                 leftPanel.progressBar.updateProgress(bcHeight,dTargetBlock,dTargetBlock-bcHeight, qsTr("Wallet is synchronized"))
+            } else {
+                // Update wallet progress bar when daemon is synced but wallet is still syncing
+                leftPanel.progressBar.updateProgress(bcHeight,dTargetBlock, dTargetBlock-bcHeight);
+            }
         }
 
         // Update wallet sync progress
