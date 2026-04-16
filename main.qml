@@ -767,7 +767,7 @@ ApplicationWindow {
         }
 
         // Update wallet sync progress
-        leftPanel.isSyncing = !disconnected && !daemonSynced;
+        leftPanel.isSyncing = !disconnected && !walletSynced;
         // Update transfer page status
         middlePanel.updateStatus();
 
