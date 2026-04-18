@@ -111,10 +111,14 @@ void Wallet::updateConnectionStatusAsync()
         if (m_connectionStatus != newStatus)
         {
             setConnectionStatus(newStatus);
-            if (newStatus == ConnectionStatus_Connected)
-            {
-                startRefresh();
-            }
+        }
+        // FIX: avvia il refresh ogni volta che siamo connessi, non solo al cambio di status.
+        // Questo risolve il caso in cui il wallet era già Connected ma il refresh era in pausa
+        // (es. dopo initAsync che chiama pauseRefresh internamente).
+        if (newStatus == ConnectionStatus_Connected)
+        {
+            qDebug() << "updateConnectionStatusAsync: daemon connected, ensuring refresh is running";
+            startRefresh();
         }
         // Release lock
         m_connectionStatusRunning = false;
@@ -304,7 +308,12 @@ void Wallet::initAsync(
         {
             emit walletCreationHeightChanged();
             qDebug() << "init async finished: " + daemonAddress;
+            // FIX: chiamare connected(true) per aggiornare lo stato e poi startRefresh()
+            // garantisce che il thread di refresh parta sempre dopo una reinizializzazione
+            // riuscita, anche se lo stato della connessione non è cambiato.
             connected(true);
+            startRefresh();
+            qDebug() << "initAsync: startRefresh forced after successful init";
         }
         else
         {

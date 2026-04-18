@@ -102,6 +102,10 @@ ApplicationWindow {
     property bool themeTransition: false
     property int backgroundSyncType: Wallet.BackgroundSync_Off;
 
+    // Watchdog per wallet sync bloccato in modalità locale
+    property int lastWalletSyncHeight: 0
+    property var lastWalletSyncHeightTime: 0
+
     // fiat price conversion
     property real fiatPrice: 0
     property var fiatPriceAPIs: {
@@ -398,6 +402,10 @@ ApplicationWindow {
 
         // save wallet keys in case wallet settings have been changed in the init
         currentWallet.setPassword(walletPassword);
+        
+        // Ensure wallet starts refreshing after init
+        // This is especially important when connecting to local daemon that's already running
+        currentWallet.startRefresh();
     }
 
     function isTrustedDaemon() {
@@ -752,6 +760,17 @@ ApplicationWindow {
         daemonSynced = dCurrentBlock >= dTargetBlock && dTargetBlock != 1
         walletSynced = bcHeight >= dTargetBlock
 
+        // Logging diagnostico dettagliato per debug sincronizzazione
+        console.log("[HeightRefreshed]" +
+                    " walletHeight=" + bcHeight +
+                    " | daemonCurrent=" + dCurrentBlock +
+                    " | daemonTarget=" + dTargetBlock +
+                    " | daemonSynced=" + daemonSynced +
+                    " | walletSynced=" + walletSynced +
+                    " | blocksRemaining=" + (dTargetBlock - bcHeight) +
+                    " | useRemoteNode=" + persistentSettings.useRemoteNode +
+                    " | disconnected=" + disconnected)
+
         // Update progress bars
         if(!daemonSynced) {
             leftPanel.daemonProgressBar.updateProgress(dCurrentBlock,dTargetBlock, dTargetBlock-firstBlockSeen);
@@ -786,6 +805,30 @@ ApplicationWindow {
         if(currentWallet.history.count == 0)
             currentWallet.history.refresh(currentWallet.currentSubaddressAccount)
 
+        // FIX Problema 2 - Watchdog: rileva wallet refresh bloccato in modalità locale.
+        // Se il daemon è sync ma il wallet height non avanza da più di 15 secondi,
+        // forza startRefresh() per sbloccare il thread di refresh.
+        if (!persistentSettings.useRemoteNode && daemonSynced && !walletSynced && bcHeight > 0 && currentWallet) {
+            if (bcHeight !== lastWalletSyncHeight) {
+                // L'altezza sta avanzando, aggiorna il riferimento temporale
+                lastWalletSyncHeight = bcHeight
+                lastWalletSyncHeightTime = Date.now()
+            } else {
+                var stuckMs = Date.now() - lastWalletSyncHeightTime
+                if (lastWalletSyncHeightTime > 0 && stuckMs > 15000) {
+                    console.log("[WalletSyncWatchdog] ATTENZIONE: wallet sync bloccato a height=" +
+                                bcHeight + " da " + stuckMs + "ms - forzando startRefresh()")
+                    currentWallet.startRefresh()
+                    // Reset timer per evitare chiamate continue ravvicinate
+                    lastWalletSyncHeightTime = Date.now()
+                }
+            }
+        } else {
+            // Reset watchdog quando sincronizzato o in modalità remota
+            lastWalletSyncHeight = 0
+            lastWalletSyncHeightTime = 0
+        }
+
         onWalletUpdate();
     }
 
@@ -795,8 +838,14 @@ ApplicationWindow {
         // Daemon connected
         leftPanel.networkStatus.connected = currentWallet ? currentWallet.connected() : Wallet.ConnectionStatus_Disconnected
 
-        if (currentWallet)
+        if (currentWallet) {
             currentWallet.refreshHeightAsync();
+            // Logging diagnostico: verifica stato connessione e sync dopo ogni refresh
+            console.log("[WalletRefresh] connected=" + currentWallet.connected() +
+                        " | walletSynced=" + appWindow.walletSynced +
+                        " | daemonSynced=" + appWindow.daemonSynced +
+                        " | isMining=" + appWindow.isMining)
+        }
     }
 
     function startDaemon(flags){
@@ -835,6 +884,11 @@ ApplicationWindow {
         }
         // resume simplemode connection timer
         appWindow.disconnectedEpoch = Utils.epoch();
+        // Reset watchdog: nuovo avvio daemon, reset contatore blocchi
+        lastWalletSyncHeight = 0
+        lastWalletSyncHeightTime = 0
+        firstBlockSeen = 0
+        console.log("[DaemonStarted] Reset watchdog e firstBlockSeen per nuova connessione locale")
     }
     function onDaemonStopped(){
         if (currentWallet) {

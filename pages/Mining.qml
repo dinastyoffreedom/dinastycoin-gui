@@ -74,6 +74,13 @@ Rectangle {
             visible: !persistentSettings.useRemoteNode && !appWindow.daemonSynced
         }
 
+        MoneroComponents.WarningBox {
+            id: noPeersWarning
+            Layout.bottomMargin: 8
+            text: qsTr("Mining is disabled: no peers connected. Wait for the daemon to connect to the network before mining to avoid creating orphan blocks.") + translationManager.emptyString
+            visible: !persistentSettings.useRemoteNode && appWindow.daemonSynced && (currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) === 0 : true)
+        }
+
         MoneroComponents.TextPlain {
             id: soloMainLabel
             text: qsTr("Mining with your computer helps strengthen the Dinastycoin network. The more people mine, the harder it is for the network to be attacked, and every little bit helps.\n\nMining also gives you a small chance to earn some Dinastycoin. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!") + "\n\n" + qsTr("P2Pool mining is a decentralized way to pool mine that pays out more frequently compared to solo mining, while also supporting the network.") + translationManager.emptyString
@@ -285,10 +292,12 @@ Rectangle {
                         visible: true
                         id: startSoloMinerButton
                         small: true
+                        enabled: false
                         primary: !stopSoloMinerButton.enabled
                         text: qsTr("Start mining") + translationManager.emptyString
                         onClicked: {
-                            var daemonReady = appWindow.daemonSynced && appWindow.daemonRunning && !persistentSettings.useRemoteNode
+                            var peerCount = currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) : 0
+                            var daemonReady = appWindow.daemonSynced && appWindow.daemonRunning && !persistentSettings.useRemoteNode && peerCount > 0
                             if (persistentSettings.allowRemoteNodeMining) {
                                 daemonReady = persistentSettings.useRemoteNode && appWindow.daemonSynced
                             }
@@ -343,6 +352,7 @@ Rectangle {
                         visible: true
                         id: stopSoloMinerButton
                         small: true
+                        enabled: false
                         primary: stopSoloMinerButton.enabled
                         text: qsTr("Stop mining") + translationManager.emptyString
                         onClicked: {
@@ -562,14 +572,37 @@ Rectangle {
     }
 
     function onMiningStatus(isMining, hashrate) {
+        var peerCount = currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) : 0
         var daemonReady = appWindow.daemonSynced
         if (!persistentSettings.allowRemoteNodeMining) {
-            var daemonReady = !persistentSettings.useRemoteNode && daemonReady
+            // Richiede almeno 1 peer con daemon locale per evitare mining su chain isolata
+            daemonReady = !persistentSettings.useRemoteNode && daemonReady && peerCount > 0
         }
+
+        // Logging diagnostico: mostra lo stato reale ogni update
+        console.log("[Mining] onMiningStatus:" +
+                    " isMining=" + isMining +
+                    " | daemonSynced=" + appWindow.daemonSynced +
+                    " | useRemoteNode=" + persistentSettings.useRemoteNode +
+                    " | peerCount=" + peerCount +
+                    " | daemonReady=" + daemonReady +
+                    " | hashrate=" + hashrate +
+                    " | allowRemoteMining=" + persistentSettings.allowRemoteNodeMining)
+
         appWindow.isMining = isMining;
         updateStatusText(hashrate)
+
+        // FIX Problema 1: Start Mining abilitato solo se NON sta minando E daemon pronto
         startSoloMinerButton.enabled = !appWindow.isMining && daemonReady
-        stopSoloMinerButton.enabled = !startSoloMinerButton.enabled && daemonReady
+
+        // FIX Problema 1: Stop Mining abilitato SOLO se sta effettivamente minando.
+        // Non dipendeva da daemonReady: se il daemon sta minando, l'utente DEVE poterlo
+        // sempre fermare, indipendentemente dal numero di peer o dallo stato di sync.
+        stopSoloMinerButton.enabled = appWindow.isMining
+
+        console.log("[Mining] Bottoni aggiornati:" +
+                    " startEnabled=" + startSoloMinerButton.enabled +
+                    " | stopEnabled=" + stopSoloMinerButton.enabled)
     }
 
     function update() {
@@ -695,6 +728,16 @@ allArgs = allArgs.filter( ( el ) => !defaultArgs.includes( el.split(" ")[0] ) )
         informationPopup.icon = StandardIcon.Critical
         informationPopup.open()
         update()
+    }
+
+    // FIX: Aggiorna lo stato mining immediatamente quando la pagina diventa visibile,
+    // senza dover aspettare il prossimo tick del timer (ogni 2 secondi).
+    // Questo risolve lo stato "stale" dei bottoni al primo caricamento della pagina.
+    onVisibleChanged: {
+        if (visible && currentWallet !== undefined && (!persistentSettings.useRemoteNode || persistentSettings.allowRemoteNodeMining)) {
+            console.log("[Mining] Pagina Mining diventata visibile - aggiornamento immediato stato mining")
+            update()
+        }
     }
 
     Component.onCompleted: {
