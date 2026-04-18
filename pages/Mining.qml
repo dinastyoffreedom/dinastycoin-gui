@@ -740,6 +740,37 @@ allArgs = allArgs.filter( ( el ) => !defaultArgs.includes( el.split(" ")[0] ) )
         }
     }
 
+    // FIX PRINCIPALE Problema 1: i bottoni mining vengono aggiornati solo quando
+    // onMiningStatus() è chiamata (via timer o avvio pagina). Ma daemonSynced diventa
+    // true DOPO il primo wallet refresh, che avviene DOPO onMiningStatus. Quindi i
+    // bottoni restano in stato sbagliato finché non scatta il prossimo tick del timer.
+    // Soluzione: reagire ai cambi di daemonSynced, walletSynced e isMining in appWindow
+    // e chiamare update() immediatamente per ottenere il mining status aggiornato.
+    Connections {
+        target: appWindow
+
+        function onDaemonSyncedChanged() {
+            if (currentWallet !== undefined && (!persistentSettings.useRemoteNode || persistentSettings.allowRemoteNodeMining)) {
+                console.log("[Mining] daemonSynced cambiato a " + appWindow.daemonSynced + " - ricalcolo stato mining")
+                update()
+            }
+        }
+
+        function onWalletSyncedChanged() {
+            if (currentWallet !== undefined && (!persistentSettings.useRemoteNode || persistentSettings.allowRemoteNodeMining)) {
+                console.log("[Mining] walletSynced cambiato a " + appWindow.walletSynced + " - ricalcolo stato mining")
+                update()
+            }
+        }
+
+        function onIsMiningChanged() {
+            if (currentWallet !== undefined && (!persistentSettings.useRemoteNode || persistentSettings.allowRemoteNodeMining)) {
+                console.log("[Mining] isMining cambiato a " + appWindow.isMining + " - ricalcolo stato mining")
+                update()
+            }
+        }
+    }
+
     Component.onCompleted: {
         walletManager.miningStatus.connect(onMiningStatus);
         p2poolManager.p2poolStatus.connect(onMiningStatus);
