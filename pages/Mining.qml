@@ -297,7 +297,13 @@ Rectangle {
                         text: qsTr("Start mining") + translationManager.emptyString
                         onClicked: {
                             var peerCount = currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) : 0
-                            var daemonReady = appWindow.daemonSynced && appWindow.daemonRunning && !persistentSettings.useRemoteNode && peerCount > 0
+                            if (!persistentSettings.useRemoteNode && peerCount === 0) {
+                                miningError(qsTr("Mining is disabled: no peers connected. Please wait for the daemon to connect to the network.") + translationManager.emptyString)
+                                return
+                            }
+
+                            
+                            var daemonReady = appWindow.daemonSynced && appWindow.daemonRunning && !persistentSettings.useRemoteNode  
                             if (persistentSettings.allowRemoteNodeMining) {
                                 daemonReady = persistentSettings.useRemoteNode && appWindow.daemonSynced
                             }
@@ -576,7 +582,7 @@ Rectangle {
         var daemonReady = appWindow.daemonSynced
         if (!persistentSettings.allowRemoteNodeMining) {
             // Richiede almeno 1 peer con daemon locale per evitare mining su chain isolata
-            daemonReady = !persistentSettings.useRemoteNode && daemonReady && peerCount > 0
+            daemonReady = !persistentSettings.useRemoteNode && daemonReady  
         }
 
         // Logging diagnostico: mostra lo stato reale ogni update
