@@ -890,6 +890,56 @@ ApplicationWindow {
         firstBlockSeen = 0
         console.log("[DaemonStarted] Reset watchdog e firstBlockSeen per nuova connessione locale")
     }
+    function onDaemonStopped(){
+        if (currentWallet) {
+            currentWallet.connected(true);
+        }
+    }
+
+    function onDaemonStartFailure(error) {
+        console.log("daemon start failed");
+        daemonStartStopInProgress = 0;
+        // resume refresh
+        currentWallet.startRefresh();
+        informationPopup.title = qsTr("Daemon failed to start") + translationManager.emptyString;
+        informationPopup.text  = error + ".\n\n" + qsTr("Please check your wallet and daemon log for errors. You can also try to start %1 manually.").arg((isWindows)? "dinastycoind.exe" : "dinastycoind")
+        if (middlePanel.advancedView.miningView.stopMiningEnabled == true) {
+            walletManager.stopMining()
+            p2poolManager.exit()
+            middlePanel.advancedView.miningView.update()
+            informationPopup.text += qsTr("\n\nExiting p2pool. Please check that port 18083 is available.") + translationManager.emptyString;
+        }
+        informationPopup.icon  = StandardIcon.Critical
+        informationPopup.onCloseCallback = null
+        informationPopup.open();
+    }
+
+    function onWalletNewBlock(blockHeight, targetHeight) {
+        // Update progress bar
+        var remaining = targetHeight - blockHeight;
+        if(blocksToSync < remaining) {
+            blocksToSync = remaining;
+        }
+
+        leftPanel.progressBar.updateProgress(blockHeight,targetHeight, blocksToSync);
+
+        // If wallet is syncing, daemon is already synced
+        leftPanel.daemonProgressBar.updateProgress(1,1,0,qsTr("Daemon is synchronized"));
+
+        foundNewBlock = true;
+    }
+
+    function onWalletMoneyReceived(txId, amount) {
+        // refresh transaction history here
+        console.log("Confirmed money found")
+        // history refresh is handled by walletUpdated
+        currentWallet.history.refresh(currentWallet.currentSubaddressAccount) // this will refresh model
+        currentWallet.subaddress.refresh(currentWallet.currentSubaddressAccount)
+
+        if(middlePanel.state == "History")
+            middlePanel.historyView.update();
+    }
+
     function onWalletUnconfirmedMoneyReceived(txId, amount) {
         // refresh history
         console.log("unconfirmed money found")
