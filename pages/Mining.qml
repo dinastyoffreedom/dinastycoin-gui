@@ -71,14 +71,16 @@ Rectangle {
         MoneroComponents.WarningBox {
             Layout.bottomMargin: 8
             text: qsTr("Your daemon must be synchronized before you can start mining") + translationManager.emptyString
-            visible: !persistentSettings.useRemoteNode && !appWindow.daemonSynced
+            visible: !persistentSettings.useRemoteNode && !appWindow.daemonSynced        
+
         }
 
         MoneroComponents.WarningBox {
             id: noPeersWarning
             Layout.bottomMargin: 8
             text: qsTr("Mining is disabled: no peers connected. Wait for the daemon to connect to the network before mining to avoid creating orphan blocks.") + translationManager.emptyString
-            visible: !persistentSettings.useRemoteNode && appWindow.daemonSynced && (currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) === 0 : true)
+             visible: !persistentSettings.useRemoteNode && appWindow.daemonSynced
+
         }
 
         MoneroComponents.TextPlain {
@@ -296,13 +298,7 @@ Rectangle {
                         primary: !stopSoloMinerButton.enabled
                         text: qsTr("Start mining") + translationManager.emptyString
                         onClicked: {
-                            var peerCount = currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) : 0
-                            if (!persistentSettings.useRemoteNode && peerCount === 0) {
-                                miningError(qsTr("Mining is disabled: no peers connected. Please wait for the daemon to connect to the network.") + translationManager.emptyString)
-                                return
-                            }
-
-                            
+                                
                             var daemonReady = appWindow.daemonSynced && appWindow.daemonRunning && !persistentSettings.useRemoteNode  
                             if (persistentSettings.allowRemoteNodeMining) {
                                 daemonReady = persistentSettings.useRemoteNode && appWindow.daemonSynced
@@ -578,7 +574,6 @@ Rectangle {
     }
 
     function onMiningStatus(isMining, hashrate) {
-        var peerCount = currentWallet ? (currentWallet.numIncomingConnections() + currentWallet.numOutgoingConnections()) : 0
         var daemonReady = appWindow.daemonSynced
         if (!persistentSettings.allowRemoteNodeMining) {
             // Richiede almeno 1 peer con daemon locale per evitare mining su chain isolata
@@ -590,7 +585,6 @@ Rectangle {
                     " isMining=" + isMining +
                     " | daemonSynced=" + appWindow.daemonSynced +
                     " | useRemoteNode=" + persistentSettings.useRemoteNode +
-                    " | peerCount=" + peerCount +
                     " | daemonReady=" + daemonReady +
                     " | hashrate=" + hashrate +
                     " | allowRemoteMining=" + persistentSettings.allowRemoteNodeMining)
@@ -741,7 +735,26 @@ allArgs = allArgs.filter( ( el ) => !defaultArgs.includes( el.split(" ")[0] ) )
     // Questo risolve lo stato "stale" dei bottoni al primo caricamento della pagina.
     onVisibleChanged: {
         if (visible && currentWallet !== undefined && (!persistentSettings.useRemoteNode || persistentSettings.allowRemoteNodeMining)) {
-            console.log("[Mining] Pagina Mining diventata visibile - aggiornamento immediato stato mining")
+            console.log("[Mining] Pagina Mining diventata visibile - aggiornamento immediato stato mining" +
+                        " | daemonSynced=" + appWindow.daemonSynced +
+                        " | walletSynced=" + appWindow.walletSynced +
+                        " | isMining=" + appWindow.isMining +
+                        " | useRemoteNode=" + persistentSettings.useRemoteNode)
+
+            // FIX AGGIUNTIVO: Aggiornamento DIRETTO dei pulsanti in base allo stato corrente
+            // di appWindow, senza attendere la risposta async di miningStatusAsync().
+            // Questo copre il caso in cui daemonSynced è già true ma nessun signal è cambiato
+            // di recente (es. pagina aperta molto dopo la sync del daemon → nessun
+            // onDaemonSyncedChanged scatta → pulsanti restano disabled).
+            var daemonReady = appWindow.daemonSynced
+            if (!persistentSettings.allowRemoteNodeMining) {
+                daemonReady = !persistentSettings.useRemoteNode && daemonReady
+            }
+            if (!appWindow.isMining && daemonReady) {
+                startSoloMinerButton.enabled = true
+                console.log("[Mining] Abilitato Start Mining direttamente al caricamento pagina")
+            }
+            // Poi lancia anche l'update async per ottenere il mining status aggiornato dal daemon
             update()
         }
     }
