@@ -402,10 +402,11 @@ ApplicationWindow {
 
         // save wallet keys in case wallet settings have been changed in the init
         currentWallet.setPassword(walletPassword);
-        
-        // Ensure wallet starts refreshing after init
-        // This is especially important when connecting to local daemon that's already running
-        currentWallet.startRefresh();
+        // NOTA: NON chiamare startRefresh() qui — initAsync() chiama già pauseRefresh()
+        // in modo sincrono e poi startRefresh() in modo asincrono DOPO che init() è completato.
+        // Chiamare startRefresh() qui causerebbe una race condition: il thread di refresh
+        // eseguirebbe m_walletImpl->refresh() mentre m_walletImpl->init() è ancora in corso,
+        // potenzialmente corrompendo lo stato del wallet (→ wallet non si apre, torna a selezione).
     }
 
     function isTrustedDaemon() {
@@ -817,8 +818,13 @@ ApplicationWindow {
                 var stuckMs = Date.now() - lastWalletSyncHeightTime
                 if (lastWalletSyncHeightTime > 0 && stuckMs > 15000) {
                     console.log("[WalletSyncWatchdog] ATTENZIONE: wallet sync bloccato a height=" +
-                                bcHeight + " da " + stuckMs + "ms - forzando startRefresh()")
-                    currentWallet.startRefresh()
+                                bcHeight + " da " + stuckMs + "ms - forzo connected(true) + startRefresh()")
+                    // connected(true) forza un re-check RPC della connessione daemon:
+                    // se connesso, chiama internamente startRefresh(); se la connessione
+                    // RPC era "stale" (come accade in local mode dopo un riavvio daemon),
+                    // questo ripristina il canale e sblocca il refresh, senza dover fare
+                    // switch manuale remoto→locale.
+                    currentWallet.connected(true)
                     // Reset timer per evitare chiamate continue ravvicinate
                     lastWalletSyncHeightTime = Date.now()
                 }
